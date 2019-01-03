@@ -25,6 +25,7 @@ public class MyLotto {
 		return imsi;
 	}
 	
+	// 출력
 	public static void print(){
 		System.out.println("오늘의 행운의 숫자 !!!");
 		for(int number : num) {
