@@ -3,7 +3,7 @@ package com.ssafy.algo;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class findword2 {
+public class FindWord2 {
 	static char[][] board = {
 			{'e', '*', 'l', '*', 'e', 'e', '*', '*'}, 
 			{'*', 'h', '*', '*', 't', 'r', 'u', 'm'},
@@ -57,7 +57,6 @@ public class findword2 {
 		System.out.println(findWord(1,4,"tree"));//true
 		System.out.println(findWord(5,0,"task"));//true
 		System.out.println(findWord(4,4,"ear"));//true
-
 		System.out.println(findWord(2,6,"trump"));//true
 		System.out.println(findWord(5,6,"goat"));//true
 	}
