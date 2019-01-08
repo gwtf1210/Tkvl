@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class D2_1204 {
-	
 	static final Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -15,7 +14,6 @@ public class D2_1204 {
 			int frequent = 0;
 			int index = 0;
 			int[] score = new int[101];	
-			
 			int[] arr = new int[1000];
 			
 			for (int j = 0; j < arr.length; j++) {
@@ -24,15 +22,12 @@ public class D2_1204 {
 			}
 			
 			for (int j = score.length-1; j >= 0; j--) {
-				
 				if(frequent < score[j]) {
 					frequent = score[j];
 					index = j;
 				}
 			}
-			
 			System.out.printf("#%d %d \n", tc_num, index);
-			
 		}
 		
 	}
