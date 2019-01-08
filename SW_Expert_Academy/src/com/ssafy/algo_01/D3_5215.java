@@ -1,44 +1,51 @@
 package com.ssafy.algo_01;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
-
+import java.util.StringTokenizer;
+ 
 public class D3_5215 {
-	static final Scanner sc = new Scanner(System.in);
-	
-		public static void main(String[] args) {
-		int tc = sc.nextInt(); // test case
-
-		for(int i = 1; i <= tc; i++) {
-			int N = sc.nextInt(); // 재료의 개수
-			int L = sc.nextInt(); // 제한 칼로리			
-			int[][] array = new int[N][2]; // 점수, 칼로리
-
-			for(int j=0; j<N; j++) {
-				array[j][0] = sc.nextInt(); // 점수
-				array[j][1] = sc.nextInt(); // 칼로리
-			}
-			
-			Arrays.sort(array, new Comparator<int[]>() {
-			    @Override
-			    public int compare(int[] o1, int[] o2) {
-			        return Integer.compare(o2[1], o1[1]);
-			    }
-			});
-			
-			int max_score = 0, tmp = 0;
-			int sum_cal = 0;
-			
-			for(int j=N-1; j>=0; j--) {
-				sum_cal += array[j][1];
-				if(sum_cal > L) break;
-				
-				tmp += array[j][0];
-				max_score = (max_score<tmp) ? tmp : max_score;
-			}
-			
-			System.out.printf("#%d %d\n",i, max_score);
-		}
-	}
+    static int n,l; 			// n : 재료의 수  // l : 제한 칼로리 
+    static int[] score, kalory; // score : 맛 점수 // kalory : 칼로리
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tc = Integer.parseInt(br.readLine()); // Test Case 수
+        
+        for(int i=1;i<=tc;i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            
+            n = Integer.parseInt(st.nextToken()); // 재료의 수
+            l = Integer.parseInt(st.nextToken()); // 제한 칼로리
+            score = new int[n]; // 맛 점수
+            kalory = new int[n]; // 칼로리
+            
+            for(int j=0; j<n; j++) {
+                st = new StringTokenizer(br.readLine());
+                score[j] = Integer.parseInt(st.nextToken());
+                kalory[j] = Integer.parseInt(st.nextToken());
+            }
+            
+            maxScore = 0; 
+            check = new boolean[n]; // 사용 재료 배열
+             
+            dfs(0,0,0); // index, 점수, 칼로리
+            System.out.println("#" + i + " " + maxScore);
+        }
+    }
+     
+    static int maxScore;
+    static boolean[] check;
+    private static void dfs(int idx, int s, int k) {
+        if(k > l) return; // 재료의 총 칼로리 > 한 칼로리
+        if(idx==n) { // 재료의 수가 되면
+            maxScore = Math.max(maxScore, s); // maxScore와 s 중 높은 점수 return
+            return;
+        }
+        
+        dfs(idx+1,s+score[idx],k+kalory[idx]);
+        dfs(idx+1,s,k);
+    }
 }
