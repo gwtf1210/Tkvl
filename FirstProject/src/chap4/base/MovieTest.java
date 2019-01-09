@@ -7,7 +7,7 @@ public class MovieTest {
 		Movie m1 = new Movie();
 		
 		m1.title = "ΩŒ«« : ΩŒøÏ∞ÌΩ√∆„ ««≈Õ¡ˆ∞ÌΩ√∆„";
-		m1.director = "¿Ã±‚πÆ";
+		m1.director = "gd";
 		m1.genre = "Ω∫∏±∑Ø";
 		m1.grade = 5;
 		m1.summary = "≤‹¿Î";
