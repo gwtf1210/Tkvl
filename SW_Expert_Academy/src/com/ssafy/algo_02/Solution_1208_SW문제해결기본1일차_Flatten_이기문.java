@@ -13,7 +13,6 @@ public class Solution_1208_SW문제해결기본1일차_Flatten_이기문 {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		
 		for (int i = 1; i <= 10; i++) {
 			int dump_n = Integer.parseInt(br.readLine());
 			String[] input = br.readLine().split(" ");
@@ -23,7 +22,6 @@ public class Solution_1208_SW문제해결기본1일차_Flatten_이기문 {
 				height[j] = Integer.parseInt(input[j]);
 			
 			 dump_func(dump_n, height, i);
-
 		}
 	}
 	
