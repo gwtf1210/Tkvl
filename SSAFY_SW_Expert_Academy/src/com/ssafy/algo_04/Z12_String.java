@@ -11,7 +11,6 @@ public class Z12_String {
 		String s2 = "서민규";
 		String s3 = new String("서민규");
 		String s4 = new String("서민규");
-		
 		// 변수 : 기본형, 참조형
 		
 //		System.out.println(s1 == s2); // true 주소의 비교
@@ -58,7 +57,6 @@ public class Z12_String {
 		for (int i = 0; i < crr.length; i++) {
 			char temp = crr[i];
 			crr[i] = crr[crr.length-1-i];
-			
 		}
 		System.out.println(Arrays.toString(crr));
 		System.out.println(new String(crr)); // 배열을 문자열로 만들기
