@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="FirstProject/src"/>
+	<classpathentry kind="src" path="hwjava01_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="hwjava02_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="hwjava04_seoul_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="java02_ssafy_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="java04_seoul_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="java06_seoul_5_LeeGiMun/src"/>
+	<classpathentry kind="src" path="SecondProject/src"/>
+	<classpathentry kind="src" path="SW_Expert_Academy/src"/>
+	<classpathentry kind="src" path="wsjava03_5_LeeGiMun/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
