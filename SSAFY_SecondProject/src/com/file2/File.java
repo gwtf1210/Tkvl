@@ -1,14 +1,15 @@
-package com.file;
+package com.file2;
 
 public abstract class File {
+	private String name;
 	private String type;
 	private int size;
-	private String name;
 	
 	File(String type, int size, String name){
+		this.name = name;
 		this.type = type;
 		this.size = size;
-		this.name = name;
+		
 	}
 	
 	@Override

@@ -1,6 +1,6 @@
 package com.computer2;
 
-public class Parts {
+public abstract class Parts {
 	String maker;
 	int price;
 	

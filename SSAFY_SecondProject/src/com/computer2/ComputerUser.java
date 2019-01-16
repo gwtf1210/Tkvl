@@ -10,8 +10,6 @@ public class ComputerUser {
 		computer.powerOn();
 		computer.powerOff();
 		computer.doJob();
-		
-		
 	}
 
 }

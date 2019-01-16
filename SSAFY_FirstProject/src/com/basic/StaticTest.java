@@ -20,7 +20,6 @@ public class StaticTest {
 	
 	
 	public static void main(String[] args) {
-		
 //		this, super는 static이 붙어있는 method에서 사용할 수 없다. 미리 만들어 놓지 않았기 때문에
 		System.out.println(++StaticTest.scount);
 		StaticTest.go();
