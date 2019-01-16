@@ -22,6 +22,10 @@ public class HelloWorld {
 		 * 2) reference type 참조형
 		 *     - class(String), interface, array, enum... 
 		 */
+		
+		System.out.println(StaticTest.scount); // 클래스 이름으로 static 변수 사용 가능
+		StaticTest.go();
+		
 		String name = "Ricky";
 		System.out.println("Hello, " + name);
 		System.out.println("i'll ace this exam");
