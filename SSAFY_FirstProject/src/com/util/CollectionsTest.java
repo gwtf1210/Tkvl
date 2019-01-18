@@ -14,7 +14,7 @@ public class CollectionsTest {
 		// 1. addAll
 		Collections.addAll(fruits, "apple", "oranege", "banana");
 		
-		// 2. sort
+		// 2. sort : 정렬이 가능한 객체의 조건 -> Comparable 인터페이스를 implements 하고 있어야 됨
 		Collections.sort(fruits);
 		System.out.println(fruits.toString());
 		
