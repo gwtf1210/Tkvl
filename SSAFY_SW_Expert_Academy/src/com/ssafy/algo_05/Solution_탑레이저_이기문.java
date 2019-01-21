@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 public class Solution_탑레이저_이기문 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int tc = Integer.parseInt(br.readLine());
 		
