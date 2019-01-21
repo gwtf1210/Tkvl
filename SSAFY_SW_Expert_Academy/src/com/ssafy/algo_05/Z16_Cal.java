@@ -24,8 +24,6 @@ public class Z16_Cal {
 				stack[top] = (A*B) + "";
 				i++;
 			}
-			
-			
 		}
 		
 		for (int i = top; i > -1; i--) {
