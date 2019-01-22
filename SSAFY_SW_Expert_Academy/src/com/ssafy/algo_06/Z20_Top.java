@@ -1,4 +1,4 @@
-package com.ssafy.algo_05;
+package com.ssafy.algo_06;
 
 import java.util.Arrays;
 import java.util.Scanner;

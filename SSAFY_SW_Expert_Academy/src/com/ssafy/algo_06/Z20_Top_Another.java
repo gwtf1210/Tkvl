@@ -1,4 +1,4 @@
-package com.ssafy.algo_05;
+package com.ssafy.algo_06;
 
 import java.io.BufferedReader;
 import java.io.IOException;
