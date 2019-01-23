@@ -97,10 +97,14 @@ public class FileManagerImpl implements FileManager{
 //			return false;	
 //		}
 	}
-
+	
 	@Override
 	public void deleteFile(int index) {
-		playList.remove(index);
+		try {
+			playList.remove(index);
+		}catch(Exception e) {
+			System.out.println("잘못된 index를 입력하셨습니다.");
+		}
 	}
 
 	@Override
