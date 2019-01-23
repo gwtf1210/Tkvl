@@ -12,7 +12,8 @@ public class FileCopy {
 		fos = new FileOutputStream(args[1]); // 복사될 파일
 		
 		for (int i; (i = fis.read()) != -1;) {
-			System.out.println(i);
+			System.out.print(Character.toChars(i));
+//			System.out.println(i);
 			fos.write(i); // 해당 코드에 일치하는 글자
 		}
 		
