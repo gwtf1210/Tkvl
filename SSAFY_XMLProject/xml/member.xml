@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members xmlns:gold = "http://www.test.com"
+		xmlns:silver = "http://www.sample.com"
+		xmlns="http://www.test2.com">
+	<gold:member>
+		<num>100</num>
+		<name>tommy jean</name>
+		<address>seoul</address>
+	</gold:member>
+	<member>
+		<num>201</num>
+		<name>hommy jean</name>
+		<address>udule</address>
+	</member>
+	<member>
+		<num>302</num>
+		<name>commy jean</name>
+		<address>beodo</address>
+	</member>
+	<silver:member>
+		<num>400</num>
+		<name>kommy jean</name>
+		<address>alala</address>
+	</silver:member>
+	<member>
+		<num>500</num>
+		<name>bommy jean</name>
+		<address>qwert</address>
+	</member>
+</members>
