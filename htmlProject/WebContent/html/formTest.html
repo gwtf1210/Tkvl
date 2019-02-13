@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  form: 클라이언트에서 서버로 정보를 전송하는 태그
+		action: 서버쪽에서 정보를 받을 파일 이름
+		method: 서버로 정보를 보내는 방식(get,post) 지정-->
+
+	<!-- form: 클라이언트에서 서버로 정보를 전송하는 태그 -->
+	<h1>Form test</h1>
+	<form action="welcome.jsp" method="get">
+		num: <input type="text" name="num"><br> 
+		pass:<input type="password" name="pass"><br>
+		
+		<hr>
+		movie:<input type="checkbox" name="hobby">
+		game:<input type="checkbox" name="hobby">
+		trip:<input type="checkbox" name="hobby">
+		reading:<input type="checkbox" name="hobby">
+		
+		<hr>
+		spring:<input type="radio" name="season">
+		summer:<input type="radio" name="season">
+		fall:<input type="radio" name="season">
+		winter:<input type="radio" name="season">
+		
+		<hr>
+		upload:<input type="file" name="file1"><br>
+		hidden value: <input type="hidden" name="hidden" value="999"><br>
+		<hr>
+		<textarea cols="30" rows="5" name="ta">hello...</textarea>
+		<br>
+		<!-- multiple로 다중선택이 가능함. 배열로 받아옴 -->
+		<select name="car" multiple="multiple">
+			<optgroup label="mycar">
+				<option value="one">morning</option>
+				<option value="two">avante</option>
+				<option value="three">k5</option>
+				<option value="four">m5</option>
+				<option value="five">grandeur</option>
+			</optgroup>
+			<optgroup label="subject">
+				<option value = "1">java</option>
+				<option value = "2">c++</option>
+				<option value = "3">html</option>
+			</optgroup>
+		</select>
+		<br>
+		<br>
+		
+		<input type="reset"	value="취소">
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>

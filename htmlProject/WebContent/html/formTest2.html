@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- form tag: 클라이언트가 서버로 값을 전송할 때 사용하는 태그 -->
+<h1>form test2</h1>
+
+<form action="welcome.jsp" method="get" autocomplete="on">
+	<!-- autocomplete 자동완성 -->
+	num: <input type="text" name="num" autofocus="autofocus" required="required" placeholder="학번을 입력하세요"><br>
+	pass: <input type="password" name="pass"><br>
+	<hr>
+	<label><input type="checkbox" name="hobby">game</label>
+	<input type="checkbox" name="hobby">movie
+	<input type="checkbox" name="hobby">trip
+	<input type="checkbox" name="hobby">reading
+	<hr>
+	<label><input type="radio" name="season">spring</label>
+	<input type="radio" name="season">summer
+	<input type="radio" name="season">fall
+	<input type="radio" name="season">winter
+	<hr>
+	<input type="file" name="file1">
+	<hr>
+	<input type="hidden" name="hiddenvalue" value="12345">
+	
+	<input type="reset" value="취소">
+	<input type="submit" value="전송">
+</form>
+
+</body>
+</html>
