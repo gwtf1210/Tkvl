@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.box1 {
+		box-sizing: content-box; /*width 값이 content 영역 기준*/ 
+		width 300px;
+		padding: 30px;
+		margin: 10px;
+		height: 150px;
+		border: 3px solid red;
+	}
+	
+	.box2 {
+		box-sizing: border-box; /* width 값이 border 영역까지 기준*/
+		width 300px;
+		padding: 30px;
+		margin: 10px;
+		height: 150px;
+		border: 3px solid blue;
+	}
+</style>
+</head>
+<body>
+	<div class="box1">box-sizing: content-box</div>
+	<div class="box2">box-sizing: border-box</div>
+
+</body>
+</html>
