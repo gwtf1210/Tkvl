@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style type="text/css">
+	#big{
+		position:relative; /* 부모는 반드시 position이 relative여야함*/
+		width: 300px;
+		height:300px;
+		border:1px solid #ccc;
+	}
+	.box{
+		position: absolute; /* 자기를 포함하는 부모요소를 기준으로 그 안에서 좌표값 배치됨*/
+		width:50px;
+		height:50px;
+		background-color: #0094ff;
+	}
+	#b1{
+		top:20px;
+		left:20px;
+		
+	}
+	#b2{
+		top:0;
+		right:0;
+	}
+	#b3{
+		bottom:0;
+		left:0;
+	}
+	#b4{
+		bottom:0;
+		right:0;
+	}
+	
+	#fix{
+		position:fixed; /* 브라우저 기준으로 좌표값 배치 */
+		top:5px;
+		right:5px;
+		width:50px;
+		height:50px;
+		background-color: red;
+	}
+	
+</style>
+</head>
+<body>
+	<div id ="big">
+		<div class="box" id="b1"></div>
+		<div class="box" id="b2"></div>
+		<div class="box" id="b3"></div>
+		<div class="box" id="b4"></div>
+	</div>
+	
+	<div id="fix">
+		
+	
+	</div>
+</body>
+</html>
