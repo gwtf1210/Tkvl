@@ -7,6 +7,7 @@ package com.ssafy.algo_11;
  */
 public class Z30_DisjointSets {
 	static int[] p = new int[10]; // 부모를 저장할 배열
+	static int[] rank = new int[p.length]; // 랭크를 저장할 배열, 높이나 레벨이라고 하기엔 애매함
 
 	public static void main(String[] args) {
 		for (int i = 0; i < p.length; i++) {
@@ -39,6 +40,7 @@ public class Z30_DisjointSets {
 	/** 멤버 x를 포함하는 새로운 집합을 생성 */
 	public static void makeSet(int x) {
 		p[x] = x; // 부모 : 자신의 index로 표시 or -1
+//		rank[x] = 0; // 초기값 0임 // 생략 가능
 	}
 
 	/** 멤버 x를 포함하는 집합의 대표자를 리턴 */
@@ -46,7 +48,9 @@ public class Z30_DisjointSets {
 		if (x == p[x]) {
 			return x;
 		} else {
-			return findSet(p[x]);
+			p[x] = findSet(p[x]); // Path Compression
+//			rank[x] = 1; // 할 필요가 없다. 대표자의 깊이(랭크)만 알면 된다.
+			return p[x];
 		}
 	}
 
@@ -56,7 +60,21 @@ public class Z30_DisjointSets {
 		int py = findSet(y);
 
 		if (px != py) { // 서로 다른 집합일 경우만 합쳐야한다. 무한루프가 돔
-			p[py] = px; // 두 집합의 대표자를 합치기
+//			p[py] = px; // 두 집합의 대표자를 합치기
+			link(px, py);
 		}
 	}
+
+	/** x의 대표자의 집합과 y의 대표자의 집합을 합침, rank도 맞춤 */
+	public static void link(int px, int py) {
+		if (rank[px] > rank[py]) {
+			p[py] = px; // 작은 쪽을 큰 쪽에 붙인다
+		} else {
+			p[px] = py;
+			if (rank[px] == rank[py]) { // 같은 경우는 rank 값이 증가한다.
+				rank[py]++; // 집합의 대표자 랭크가 증가됨
+			}
+		}
+	}
+	
 } // end of class
