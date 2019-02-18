@@ -1,4 +1,4 @@
-package com.ssafy.algo10;
+package com.ssafy.algo_10;
 /**
  * 백트래킹으로 순열 구하기
  *
