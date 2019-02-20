@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 2. 함수 정의 방식을 사용하는 객체 생성 방법
+	function User(name, address){
+		this.name = name;
+		this.address = address;
+		this.info = function(){
+			document.write(this.name + " : " + this.address + "<br>");
+		}
+	}
+	
+	// 객체 생성
+	var user1 = new User('jane','seoul');
+	var user2 = new User('billy','la');
+	var user3 = new User('harry','london');
+	
+	user1.info();
+	user2.info();
+	user3.info();
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

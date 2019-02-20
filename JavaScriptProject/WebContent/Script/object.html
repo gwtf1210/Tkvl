@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 1. 리터럴(값) 방식의 객체 생성 방법 : 클래스 정의와 동시에 인스턴스 생성
+	var user = {
+		name : 'tommy',
+		address : 'seoul',
+		company : 'abc trading',
+	};
+
+	document.write(user.name);
+	document.write(user.address);
+	document.write(user.company);
+	/* document.write(user.['company']);  */
+	var key = 'company';//대괄호로 접근하면 변수이름으로 접근 가능함
+	document.write(user[key]);
+	/* document.write(user.key); 이건 안됨*/
+
+	for ( var key in user) {
+		document.write("<h1>" + key + ":" + user[key] + "<br>");
+	}
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
