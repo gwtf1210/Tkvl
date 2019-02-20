@@ -2,6 +2,22 @@ package com.ssafy.algo_12;
 
 public class Z37_RunLength {
 
+	private static String getRandomRedundantString() {
+		int len = (int) (Math.random() * 40 + 20);
+		int kindNum = (int) (Math.random() * 5 + 5);
+		StringBuilder sb = new StringBuilder(len);
+
+		sb.append((char) ((Math.random() * kindNum) + 'A'));
+		for (int i = 1; i < len; i++) {
+			if (Math.random() > 0.7)
+				sb.append((char) ((Math.random() * kindNum) + 'A'));
+			else 
+				sb.append(sb.charAt(i-1));
+		}
+		
+		return sb.toString();
+	}
+	
 	static String RLEncoding(String input) {
 		String output = "";
 
@@ -55,7 +71,8 @@ public class Z37_RunLength {
 	}
 
 	public static void main(String[] args) {
-		String origin = "ABBBBBBBBBBBBBBBBBBBDDDDDDDDDDDEEEEEEEECC";
+		String origin = getRandomRedundantString();
+		
 		System.out.println("origin : "+ origin);
 		
 		String encode = RLEncoding(origin);
