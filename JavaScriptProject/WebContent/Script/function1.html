@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 1. 선언적 함수 : 함수 이름이 있음
+	function go(num){
+		alert(++num);
+	}
+
+	go(6);
+	
+	function sum(a,b){ 
+		return a+b;
+	}
+	
+	var result = sum(3,6);
+	alert(result);
+	
+	// 1. 숫자 2개를 입력 받아 큰 수를 리턴하는 max()
+	function max(a,b){
+		return a > b ? a : b;
+	}
+	// 2. 반지름을 입력 받아 원둘레를 경고창으로 보여주는 getArea()
+	function getArea(r){
+		circum = 2*r*3.14;
+		alert(circum)
+	}
+	// 3. 문자열과 숫자를 입력받아 문자열을 숫자만큼 반복해서 브라우저에 출력하는 loopString()
+	function loopString(str, num){
+		for (var i = 0; i < num; i++) {
+			document.write("<h1>"+str+"</h1><hr>");
+		}
+	}
+	
+	var result = max(10,6);
+	
+	alert(result);
+	getArea(6);
+	loopString('이기문',5);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
