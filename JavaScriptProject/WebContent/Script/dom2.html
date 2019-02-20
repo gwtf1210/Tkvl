@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function check(){
+		var id = document.getElementById("id"); // <input type ="text" id="id"
+		var pass = document.getElementById("pass"); // <input type ="password" id="pass">		
+		var span = document.getElementById("msg");
+		msg.style.color="red"; // javascript에서 css 조정할때 'style' 속성 이용해서 지정함
+		
+		if(id.value == "이기문"){
+			span.innerHTML = " 사용불가 아이디";
+		}
+		
+		if(pass.value.length >= 6 && pass.value.length <= 10){
+			alert("입력 잘했습니다.");
+		}else{
+			alert("6자 이상 10자 이하의 글자를 입력해주세요.");
+		}	
+	}
+</script>
+
+</head>
+<body>
+	<h1>dom test</h1>
+	<form method="post" action="first.html" id="f">
+		ID:<input type="text" id="id"><span id="msg"></span><br>
+		PW:<input type="password" id="pass"><br> 
+		<input type="button" value="회원가입" onclick="check()">
+	</form>
+</body>
+</html>

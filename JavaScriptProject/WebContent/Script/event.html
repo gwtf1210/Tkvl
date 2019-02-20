@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function process() {
+		alert('hello~');
+	}
+
+	function mouseOver() {
+		alert('mouse over~');
+	}
+
+	function go(code) {
+		if (code == 1) {
+			open('first.html', '', 'width=300px height=300px scrollbars=yes'); // popup 창 띄우기
+		} else if (code == 2) {
+			print();
+		}else{
+			close();
+		}
+
+	}
+</script>
+
+</head>
+<body>
+	<h1>event test</h1>
+	<input type="button" value="click" onclick="process()">
+	<input type="button" value="mouseOver" onmouseover="mouseOver()">
+	<input type="button" value="open" onclick='go(1)'>
+	<input type="button" value="print" onclick='go(2)'>
+	<input type="button" value="close" onclick='go(3)'>
+
+</body>
+</html>

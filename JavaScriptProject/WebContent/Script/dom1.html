@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function check() {
+		// 화면상에 id입력칸 알아내기
+		var id = document.getElementById("id"); // <input type ="text" id="id"
+		var pass = document.getElementById("pass"); // <input type ="password" id="pass">
+		var pass2 = document.getElementById("pass2");
+		
+		if (id.value == "") {
+			alert('id를 입력해주세요');
+			return;
+		}
+
+		if (pass.value == "") {
+			alert("pass를 입력해주세요");
+			return;
+		}
+		
+		if(pass.value != pass2.value){
+			alert("Password가 서로 다릅니다.");
+			pass.value ="";
+			pass2.value ="";
+			return;
+		}
+		
+		// form 전송
+		var form = document.getElementById("f");
+		form.method = "get";
+		form.action = "second.html";
+		form.submit();
+
+	}
+</script>
+
+</head>
+<body>
+	<h1>dom test</h1>
+	<form method="post" action="first.html" id="f">
+		ID:<input type="text" id="id"><br>
+		PW:<input type="password" id="pass"><br> 
+		PW2:<input type="password" id="pass2"><br> 
+		<input type="button" value="로그인" onclick="check()">
+	</form>
+
+
+</body>
+</html>
