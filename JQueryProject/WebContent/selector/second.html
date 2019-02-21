@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('ul li').css('color', 'red');
+		$('div ul li').css('color', 'blue');
+		
+		$(':text').val("hello jquery");
+		// method chaining
+		$(':password').css('border','2px solid red').css('background-color', 'yellow');
+		$(':button').css('back-ground-color', 'green');
+		$(':file').css('border','3px dotted blue');
+		$('[href]').css('color', 'red').css('text-decoration','none');
+	});
+</script>
+
+
+</head>
+<body>
+	<input type="text"><br>
+	<input type="password"><br>
+	<input type="button" value="hello"><br>
+	<input type="file"><br>
+	<a href="#">gogo</a>
+	<hr>
+		<div>
+			<ul id="blue">
+				<li>apple</li>
+				<li>banana</li>
+				<li>orange</li>
+			</ul>
+		</div>
+		<ul>
+			<li>coffee</li>
+			<li>black tea</li>
+			<li>milk</li>
+		</ul>
+</body>
+</html>
