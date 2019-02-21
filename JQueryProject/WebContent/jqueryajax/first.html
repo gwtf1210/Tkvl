@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(':button').click(function(){
+			// ajax 요청 보내기
+			// 기본이 get 방식			
+			$.ajax({
+				// json 형식으로 ajax통신에 필요한 정보언급해줘야됨
+				url: 'first.jsp', // server
+				success : function(result,status,xhr){ // 서버로부터 데이터 전송이 성공적이면
+					$('#display').val(result);
+				},
+				error : {
+										
+				}
+			});
+		});
+	});
+
+</script>
+</head>
+<body>
+<h1>ajax test</h1>
+<input type="button" value = "get data" onclick="getData()">
+<input type="button" value = "post data" onclick="postData()">
+<hr>
+<textarea rows="10" cols="80" id="display">
+
+</textarea>
+
+</body>
+</html>
