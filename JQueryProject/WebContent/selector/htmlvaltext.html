@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	// text(), html(), val():getter, setter 기능을 다 가지고 있는 액션
+	// div는 html 메소드를 써야한다.
+	$(document).ready(function(){
+		$('button:first').click(function(){
+			$('#p1').text('<h1>hello world</h1>');			
+		});
+		
+		$('button:eq(1)').click(function(){
+			$('#p2').html('<h1>hello world</h1>');
+		});
+		
+		$('button:eq(2)').click(function(){
+			$('#msg').val('dolly duck!!!');
+		});
+		
+		$('button:last').click(function(){
+			var str = $('p1').text() + "\n" + $('#p2').html() + "\n" + $('#msg').val();
+			alert(str);
+		});
+	});
+</script>
+
+</head>
+<body>
+	<button>set text</button>
+	<button>set html</button>
+	<button>set value</button>
+	<button>set value</button>
+	<hr>
+	<p id="p1">this is first p tag</p>
+	<p id="p2">this is second p tag</p>
+	<input type="text" id="msg" value="mickey">
+	
+	
+</body>
+</html>
