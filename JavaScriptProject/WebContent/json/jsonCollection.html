@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr = null;
+	function getXHR() {
+		xhr = new XMLHttpRequest();
+	}
+
+	// first.jsp(서버)로 ajax요청을 보내서 결과를 받아오는 함수
+	function getData() {
+		getXHR(); // XHLHttpRequest 생성
+		xhr.open('get', 'jsonCollection.jsp', true); // ajax통신 준비
+		xhr.onreadystatechange = callback; // callback 함수 지정
+		xhr.send(null); // ajax 통신 요청
+	}
+
+	function callback() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			processJson();
+		}
+	}
+
+	function processJson() {
+		var text = xhr.responseText; // text 형식으로 받음
+		var json = eval("(" + text + ")"); // 문자열형식 --> json 객체로 변환됨
+		var msg = '';
+
+	
+		// 사용자가 입력한 키 받아오기
+		var key = document.getElementById('key');
+		
+		// 입력받은 키 기준으로 json데이터에서 값 찾기
+		var value = json[key.value]; // 값 찾아짐
+		console.log(value);
+		console.log(typeof(value));
+		if(typeof value == 'undefined'){
+			document.getElementById('country').innerHTML = "no data....";
+		}else{
+			document.getElementById('country').innerHTML = value;			
+		}
+		
+		key.value = '';
+	}
+</script>
+</head>
+<body>
+
+
+
+	<h1>ajax test - json collection</h1>
+	<input type="text" id="key">
+	<button onclick="getData()">get country</button>
+	<hr>
+	<div id="country"></div>
+</body>
+</html>

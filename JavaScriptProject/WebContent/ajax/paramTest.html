@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr = null;
+	function getXHR() {
+		xhr = new XMLHttpRequest();
+	}
+	
+
+	function process() {
+		var id = document.getElementById('id');
+		var pass = document.getElementById('pass');
+
+		var param = "?id=" + id.value + "&pass=" + pass.value;
+
+		getXHR(); // XML HttpRequest 생성
+		xhr.open('get', 'paramTest.jsp' + param, true); // ajax 통신 준비
+		xhr.onreadystatechange = callback; // callback 함수 지정
+		xhr.send(null); // ajax 통신 요청
+		
+		id.value='';
+		pass.value='';
+	}
+
+	
+	function process2() {
+		var id = document.getElementById('id');
+		var pass = document.getElementById('pass');
+
+		var param = "id=" + id.value + "&pass=" + pass.value;
+		
+		getXHR(); // XML HttpRequest 생성
+		xhr.open('post', 'paramTest.jsp', true); // ajax 통신 준비
+		xhr.onreadystatechange = callback; // callback 함수 지정
+		
+		// post방식으로 데이터 보낼때 지정해야 되는 부분(지정하지 않으면 데이터가 제대로 전달 안됨)
+		xhr.setRequestHeader('Content-Type',
+				'application/x-www-form-urlencoded;charset=utf-8');	
+		
+		xhr.send(param); // ajax 통신 요청
+		
+		id.value='';
+		pass.value='';
+	}
+	
+	
+	function callback() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var result = document.getElementById("display");
+			result.innerHTML = "<h2>" + xhr.responseText + "</h2>";
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>ajax param test</h1>
+	ID:
+	<input type="text" id="id">
+	<br> PW:
+	<input type="password" id="pass">
+	<br>
+	<input type="button" value="로그인1" onclick="process()">
+	<input type="button" value="로그인2" onclick="process2()">
+	<hr>
+	<div id="display"></div>
+</body>
+</html>
