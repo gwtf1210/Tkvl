@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			var h1 = $('<h1>hello...h1</h1>'); // <h1></h1> 생성
+			$('#here').append(h1);
+			
+			var h2 = $('<h2>hello....h2</h2>');
+			h2.appendTo('#there');
+			
+			var h3 = $('<h3>hello....h3</h3>');
+			
+			var img = $('<img/>');
+			img.attr('src','../img/bg3.jpg');
+			$('#here').append(h3,img);
+			
+		});
+	});
+
+</script>
+</head>
+<body>
+<button>create</button>
+<button>create2</button>
+<button>create3</button>
+<div id="here"></div>
+<div id="there"></div>
+</body>
+</html>
