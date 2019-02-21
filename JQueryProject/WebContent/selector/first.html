@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// html 문서가 로딩이 된 후 jquery 내용을 실행하도록 지정
+	$(document).ready(function(){
+		$('h1').css('color', 'blue');
+		$('h2').css('color', 'pink');
+		$('h1').css('font-size', '30pt');
+		
+		$('.orange').css('color','orange');
+		$('#green').css('color','green');
+		$('p').css({"background-color":"yellow", "font-size":"50pt"});
+	})
+
+
+</script>
+
+</head>
+<body>
+	<h1>this is first h1</h1>
+	<h1>this is second h1</h1>
+	
+	<h2>this is first h2</h2>
+	<h2>this is second h2</h2>
+	<h2>this is third h2</h2>
+	
+	<h1 class="orange"> this is orange h1</h1>
+	<h1 id="green"> this is green h1</h1>
+	<p> this is p tag</p>
+</body>
+</html>
