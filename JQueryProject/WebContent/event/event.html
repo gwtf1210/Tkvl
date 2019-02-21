@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+	.reverse{
+		background-color: black;
+		color:white;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+/* 		$('h1').click(function(){
+			alert($(this).text());
+		}); */
+		
+		// 해당 선택자에 이벤트 등록시키는 액션
+		$('h1').on('click',function(){
+			alert($(this).text());
+		});
+		
+		// $('h1').off('click'); // 이벤트 제거
+		
+		$('h1').mouseenter(function(){
+			$(this).addClass('reverse');
+		});
+		
+		
+		$('h1').mouseleave(function(){
+			$(this).removeClass('reverse');
+		});
+	});
+</script>
+
+</head>
+<body>
+	<h1>header - 0</h1>
+	<h1>header - 1</h1>
+	<h1>header - 2</h1>
+</body>
+</html>
