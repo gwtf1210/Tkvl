@@ -5,11 +5,9 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	var xhr = null;
-	
 	function getXHR(){
 		xhr = new XMLHttpRequest(); /* 이 객체가 있어야 비동기 통신 가능*/
 	}
-	
 	// first.jsp(서버)로 ajax요청을 보내서 결과를 받아오는 함수
 	function getData(){
 		getXHR(); // XHLHttpRequest 생성
@@ -17,21 +15,18 @@
 		xhr.onreadystatechange = callback; // callback 함수 지정
 		xhr.send(null); // ajax 통신 요청
 	}
-	
 	function postData(){
 		getXHR(); // XHLHttpRequest 생성
 		xhr.open('post','first.jsp', true); // ajax통신 준비
 		xhr.onreadystatechange = callback; // callback 함수 지정
 		xhr.send(); // ajax 통신 요청
 	}
-	
 	function callback(){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			var result = document.getElementById("display");
 			result.value = xhr.responseText;
 		}
 	}
-
 </script>
 </head>
 <body>
