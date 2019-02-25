@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * DP - 동전 거스름돈
  */
-public class Z40_Money {
+public class Z40_Money1 {
 	public static void main(String[] args) {
 		System.out.println(f(8)); // 8원의 동전 거스름돈 최소 개수
 	} // end of main
