@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko-kr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부트스트랩</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+</style>
+</head>
+<body>
+	<!-- real -->
+	<div class="container">
+			<!-- 1.<nav>
+			네비게이션 바 : nav 태그로 시작. navbar navbar-default 클래스 적용
+			navbar-default: 배경색상과 테두리 지정해 주는 역할
+			navbar-fixed-top: 상단에 고정 -->
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+				<!-- Brand and toggle get grouped for better mobile display 
+				2.네비게이션 바 헤더: 사이트 로고 들어가는 부분과 모바일 상태에서 三아이콘 처리하는 부분으로 구성되어 있음.	-->
+			<div class="container"> <!-- 지정안하면 네비게이션바 크기가 100%로 확장되어 버림 -->
+				<a class="navbar-brand" href="#">로고 </a>
+				<div class="navbar-header">
+					<!-- 모바일 상태에서 三아이콘:웹화면에서는 보이지 않음 -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-ex11-collapse">
+						<span class="sr-only">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+					</button>
+					<!-- 로고 -->
+				</div>
+
+					<!-- 3.메뉴시작부분: 
+					collapse: 모바일 상태에서 해당 메뉴 감추는 역할
+					navbar-collapse: 모바일 상태에서  三아이콘 클릭하면 서브메뉴가 보여지게 하는 역할
+					navbar-ex1-collapse: 위쪽 버튼 data-target=".navbar-ex1-collapse"와 연동되는 부분
+					navbar-right: 메뉴가 있는 부분을 오른쪽으로 이동하려면 사용	
+					dropdown-menu-left:메뉴에 navbar-right를 적용하면  dropdown-menu부분도 오른쪽으로 정렬해줘야 함		-->
+
+				<div class="collapse navbar-collapse  navbar-right navbar-ex11-collapse">
+					<ul class="nav navbar-nav">
+						<!-- <li class="active"><a href="#">메뉴1 </a></li> -->
+						<li><a href="#">메뉴1 </a></li>
+						<li><a href="#">메뉴2</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">메뉴3 <b class="caret"></b></a>
+							<ul class="dropdown-menu  dropdown-menu-left">
+								<li><a href="#">서브메뉴 1</a></li>
+								<li><a href="#">서브메뉴 2</a></li>
+								<li><a href="#">서브메뉴 3</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">메뉴4 <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">서브메뉴 4</a></li>
+								<li><a href="#">서브메뉴 5</a></li>
+								<li><a href="#">서브메뉴 6</a></li>
+							</ul>
+						</li>
+					</ul>
+					<form action="haha.html" class="navbar-form navbar-right" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="검색">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+	
+	</div>	<!-- container 끝 -->
+	
+	
+</body>
+</html>
