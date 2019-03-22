@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/MessageServlet")
 public class MessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 서버에서 클라이언트로 나갈 문서의 타입을 지정(mime type)
 		response.setContentType("text/html;charset=utf-8");
