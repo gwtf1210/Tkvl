@@ -1,6 +1,13 @@
 package mvc.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import mvc.service.MemberService;
 import mvc.vo.Member;
@@ -9,85 +16,134 @@ import mvc.vo.Member;
 public class MemberDAO implements MemberService {
 
 	ArrayList<Member> list;
+	DataSource ds; // ConnectionPool
 
 	public MemberDAO() {
-		list = new ArrayList<>();
-		list.add(new Member("123", "tommy", "seoul", "010-2345-6789"));
-		list.add(new Member("456", "jane kimberly", "la", "010-3345-4789"));
-		list.add(new Member("789", "billy joel", "london", "010-6545-5677"));
-	}
-
-	public void go() {
-
+		try {
+			// 1. JNDI를 사용해서 ConnectionPool 찾아오기
+			InitialContext context = new InitialContext();
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/mysql"); // 공유자원을 찾아오기
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public ArrayList<Member> selelectAll() {
-		return list;
+		ArrayList<Member> m = new ArrayList<Member>();
+		String q = "select * from member";
+
+		try {
+			Connection con = ds.getConnection();
+			Statement stat = con.createStatement();
+			ResultSet rs = stat.executeQuery(q);
+
+			while (rs.next()) {
+				String mid = rs.getString(1);
+				String name = rs.getString(2);
+				String address = rs.getString(3);
+				String tel = rs.getString(3);
+
+				m.add(new Member(mid, name, address, tel));
+			}
+
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return m;
 	}
 
 	@Override
 	public Member selectOne(String id) {
-		for (Member m : list) {
-			if (m.getId().equals(id)) {
-				return m;
+		String q = "select * from member where mid=" + id;
+		Member m = null;
+		try {
+			Connection con = ds.getConnection();
+			Statement stat = con.createStatement();
+			ResultSet rs = stat.executeQuery(q);
+			if (rs.next()) {
+				String mid = rs.getString(1);
+				String name = rs.getString(2);
+				String address = rs.getString(3);
+				String tel = rs.getString(4);
+
+				m = new Member(mid, name, address, tel);
 			}
+
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return null;
+		return m;
 	}
 
 	@Override
 	public void insert(Member m) {
-		list.add(m);
+		String mid = m.getId();
+		String name = m.getName();
+		String address = m.getAddress();
+		String tel = m.getTel();
+
+		String q = "insert into member values(" + mid + "," + name + "," + address + "," + tel + ")";
+		try {
+			Connection con = ds.getConnection();
+			Statement stat = con.createStatement();
+			int cnt = stat.executeUpdate(q);
+
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return;
 	}
 
 	@Override
 	public void delete(String id) {
-		Member m = selectOne(id);
-		if (m == null) {
-			return;
-		} else {
-			list.remove(m);
-			return;
+		String q = "delete from member where mid=" + id;
+		try {
+			Connection con = ds.getConnection();
+			Statement stat = con.createStatement();
+			int cnt = stat.executeUpdate(q);
+
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return;
 	}
 
 	@Override
 	public ArrayList<Member> search(String condition, String word) {
-		ArrayList<Member> temp = new ArrayList<>();
 
-		if (condition.equals("name")) {
-			for (Member m : list) {
-				if (m.getName().equals(word)) {
-					temp.add(m);
-				}
-			}
-
-		} else if (condition.equals("address")) {
-			for (Member m : list) {
-				if (m.getAddress().equals(word)) {
-					temp.add(m);
-				}
-			}
-		} else if (condition.equals("tel")) {
-			for (Member m : list) {
-				if (m.getTel().equals(word)) {
-					temp.add(m);
-				}
-			}
-		}
-		return temp;
+		return null;
 	}
 
 	@Override
 	public void modify(Member m) {
-		for(Member om : list) {
-			if(om.getId().equals(m.getId())) {
-				om.setName(m.getName());
-				om.setAddress(m.getAddress());
-				om.setTel(m.getTel());
-				return;
-			}
+		String mid = m.getId();
+		String name = m.getName();
+		String address = m.getAddress();
+		String tel = m.getTel();
+
+		String q = "update member set name='" + name + "' where mid=" + mid;
+
+		try {
+			Connection con = ds.getConnection();
+			Statement stat = con.createStatement();
+			int cnt = stat.executeUpdate(q);
+
+			System.out.println(cnt);
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return;
 	}
 }

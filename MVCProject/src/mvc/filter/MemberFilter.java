@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.controller.MemberController;
 
-@WebFilter("*.mvc")
+//@WebFilter("*.mvc")
 public class MemberFilter implements Filter {
 	MemberController controller;
 
@@ -30,7 +30,7 @@ public class MemberFilter implements Filter {
 		req.setCharacterEncoding("euc-kr"); // 한글 처리
 		
 		// 클라이언트가 보내온 요청문자를 구분
-		// http://localhost:7070/mvc/list.mvc
+		// http://localhost:8080/mvc/list.mvc
 		String reqString = req.getServletPath();
 		
 		if(reqString.equals("/list.mvc")) { // 초기화면
