@@ -23,6 +23,7 @@ public class BoardController {
 		ArrayList<Board> list = dao.selectAll();
 		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
+
 		try {
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
@@ -31,12 +32,21 @@ public class BoardController {
 	}
 
 	public void read(HttpServletRequest request, HttpServletResponse response) {
+		RequestDispatcher dispatcher;
+
 		int num = Integer.parseInt(request.getParameter("num"));
 		Board b = dao.selectOne(num);
-		b.setCount(b.getCount() + 1);
-		dao.modifyCnt(b);
-		request.setAttribute("b", b);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/read.jsp");
+
+		if (b == null) {
+			request.setAttribute("error", "頃措嫻 雿办澊韯瓣皜 鞐嗢姷雼堧嫟.");
+			dispatcher = request.getRequestDispatcher("/view/error.jsp");
+		} else {
+			b.setCount(b.getCount() + 1);
+			dao.modifyCnt(b);
+			request.setAttribute("b", b);
+			dispatcher = request.getRequestDispatcher("/view/read.jsp");
+		}
+
 		try {
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
@@ -132,7 +142,7 @@ public class BoardController {
 		}
 	}
 
-	// LOGIN 贸府
+	// LOGIN 觳橂Μ
 	public void login(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		String id = req.getParameter("id");
@@ -145,7 +155,7 @@ public class BoardController {
 		}
 	}
 
-	// LOGOUT 贸府
+	// LOGOUT 觳橂Μ
 	public void logout(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		session.setAttribute("id", null);

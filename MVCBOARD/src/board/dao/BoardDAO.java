@@ -3,7 +3,6 @@ package board.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -49,7 +48,7 @@ public class BoardDAO implements BoardService {
 			}
 			stat.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return b;
@@ -146,24 +145,28 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public ArrayList<Board> search(String condition, String word) {
-		ArrayList<Board> list = selectAll();
 		ArrayList<Board> temp = new ArrayList<>();
-		if (condition.equals("num")) {
-			for (Board b : list) {
-				if (b.getName().equals(word)) {
-					temp.add(b);
+		try {
+			ArrayList<Board> list = selectAll();
+			if (condition.equals("num")) {
+				for (Board b : list) {
+					if (b.getName().equals(word)) {
+						temp.add(b);
+					}
+				}
+			} else if (condition.equals("name")) {
+				for (Board b : list) {
+					if (b.getName().equals(word)) {
+						temp.add(b);
+					}
 				}
 			}
-		} else if (condition.equals("name")) {
-			for (Board b : list) {
-				if (b.getName().equals(word)) {
-					temp.add(b);
-				}
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return temp;
 	}
-	
+
 	@Override
 	public void modifyCnt(Board b) {
 		try {
@@ -171,20 +174,20 @@ public class BoardDAO implements BoardService {
 			Connection con = ds.getConnection();
 			// 3. Statement 생성
 			PreparedStatement pstat = con.prepareStatement(q);
-			
-			//3-1. ?에 값 setting
+
+			// 3-1. ?에 값 setting
 			pstat.setInt(1, b.getCount());
-			
-			//4. Query 전송
+
+			// 4. Query 전송
 			int rs = pstat.executeUpdate();
-			
-			//5. db에서 온 결과 처리
+
+			// 5. db에서 온 결과 처리
 			System.out.println(rs + "개의 레코드 수정!");
-			
-			//6. 마무리
+
+			// 6. 마무리
 			pstat.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
