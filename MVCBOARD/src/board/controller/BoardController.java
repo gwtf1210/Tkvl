@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.dao.BoardDAO;
 import board.service.BoardService;
@@ -19,7 +20,7 @@ public class BoardController {
 	}
 
 	public void list(HttpServletRequest request, HttpServletResponse response) {
-		ArrayList<Board> list = dao.selelectAll();
+		ArrayList<Board> list = dao.selectAll();
 		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
 		try {
@@ -32,7 +33,8 @@ public class BoardController {
 	public void read(HttpServletRequest request, HttpServletResponse response) {
 		int num = Integer.parseInt(request.getParameter("num"));
 		Board b = dao.selectOne(num);
-		dao.increaseCount(b);
+		b.setCount(b.getCount() + 1);
+		dao.modifyCnt(b);
 		request.setAttribute("b", b);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/read.jsp");
 		try {
@@ -73,7 +75,7 @@ public class BoardController {
 		int num = Integer.parseInt(request.getParameter("num"));
 
 		dao.delete(num);
-		request.setAttribute("list", dao.selelectAll());
+		request.setAttribute("list", dao.selectAll());
 
 		try {
 			dispatcher.forward(request, response);
@@ -120,12 +122,37 @@ public class BoardController {
 		int count = Integer.parseInt(request.getParameter("count"));
 		Board b = new Board(num, pass, name, wdate, title, content, count);
 		dao.modify(b);
-		request.setAttribute("list", dao.selelectAll());
+		request.setAttribute("list", dao.selectAll());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
 		try {
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// LOGIN 贸府
+	public void login(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		String id = req.getParameter("id");
+		session.setAttribute("id", id);
+
+		try {
+			res.sendRedirect("list.bod");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// LOGOUT 贸府
+	public void logout(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		session.setAttribute("id", null);
+
+		try {
+			res.sendRedirect("list.bod");
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

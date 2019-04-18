@@ -41,6 +41,10 @@ public class FrontController extends HttpServlet {
 			controller.modifyForm(request, response);
 		} else if (reqString.equals("/modifyProcess.bod")) {
 			controller.modifyProcess(request, response);
+		} else if (reqString.equals("/login.bod")) {
+			controller.login(request, response);
+		} else if (reqString.equals("/logout.bod")) {
+			controller.logout(request, response);
 		}
 	}
 

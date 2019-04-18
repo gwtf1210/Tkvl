@@ -1,6 +1,7 @@
 package board.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,7 @@ public class BoardDAO implements BoardService {
 	}
 
 	@Override
-	public ArrayList<Board> selelectAll() {
+	public ArrayList<Board> selectAll() {
 		ArrayList<Board> b = new ArrayList<>();
 		String q = "select * from board order by wdate desc";
 
@@ -56,9 +57,9 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public Board selectOne(int snum) {
-		String q = "select * from board where num=" + snum;
 		Board b = null;
 		try {
+			String q = "select * from board where num=" + snum;
 			Connection con = ds.getConnection();
 			Statement stat = con.createStatement();
 			ResultSet rs = stat.executeQuery(q);
@@ -83,19 +84,23 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public void insert(Board b) {
-		String pass = b.getPass();
-		String name = b.getName();
-		String title = b.getTitle();
-		String content = b.getContent();
-		
-		String q = "insert into board values(null" + " , '" + pass + "' , '" + name + "' , sysdate() , '" + title + "' , '" + content
-				+ "', 0)";
-
 		try {
+			String q = "insert into board values(null,?,?,sysdate(),?,?,0)";
+
 			Connection con = ds.getConnection();
-			Statement stat = con.createStatement();
-			int cnt = stat.executeUpdate(q);
-			stat.close();
+			// 3. Statement 생성
+			PreparedStatement pstat = con.prepareStatement(q);
+
+			pstat.setString(1, b.getPass());
+			pstat.setString(2, b.getName());
+			pstat.setString(3, b.getTitle());
+			pstat.setString(4, b.getContent());
+
+			int rs = pstat.executeUpdate();
+			// 5. db에서 온 결과 처리
+			System.out.println(rs + "개의 레코드 추가!");
+
+			pstat.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,10 +113,10 @@ public class BoardDAO implements BoardService {
 		String q = "delete from board where num=" + num;
 		try {
 			Connection con = ds.getConnection();
-			Statement stat = con.createStatement();
-			int cnt = stat.executeUpdate(q);
-
-			stat.close();
+			PreparedStatement pstat = con.prepareStatement(q);
+			int rs = pstat.executeUpdate(q);
+			System.out.println(num + "번 데이터 삭제 완료!");
+			pstat.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,22 +126,17 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public void modify(Board b) {
-		int num = b.getNum();
-		String pass = b.getPass();
-		String name = b.getName();
-		String wdate = b.getWdate();
-		String title = b.getTitle();
-		String content = b.getContent();
-		int count = b.getCount();
-
-		String q = "update board set name='" + name + "' where num=" + num;
-
 		try {
-			Connection con = ds.getConnection();
-			Statement stat = con.createStatement();
-			int cnt = stat.executeUpdate(q);
+			String q = "update board set wdate = sysdate(), title = ?, content = ? where num = " + b.getNum();
 
-			stat.close();
+			Connection con = ds.getConnection();
+			PreparedStatement pstat = con.prepareStatement(q);
+
+			pstat.setString(1, b.getTitle());
+			pstat.setString(2, b.getContent());
+			int rs = pstat.executeUpdate();
+			System.out.println(rs + "개의 레코드 수정!");
+			pstat.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,7 +146,7 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public ArrayList<Board> search(String condition, String word) {
-		ArrayList<Board> list = selelectAll();
+		ArrayList<Board> list = selectAll();
 		ArrayList<Board> temp = new ArrayList<>();
 		if (condition.equals("num")) {
 			for (Board b : list) {
@@ -163,28 +163,29 @@ public class BoardDAO implements BoardService {
 		}
 		return temp;
 	}
-
+	
 	@Override
-	public void increaseCount(Board b) {
-		int num = b.getNum();
-		String pass = b.getPass();
-		String name = b.getName();
-		String wdate = b.getWdate();
-		String title = b.getTitle();
-		String content = b.getContent();
-		int count = b.getCount();
-
-		String q = "update board set count='" + (count + 1) + "' where num=" + num;
+	public void modifyCnt(Board b) {
 		try {
+			String q = "update board set count = ? where num = " + b.getNum();
 			Connection con = ds.getConnection();
-			Statement stat = con.createStatement();
-			int cnt = stat.executeUpdate(q);
-
-			stat.close();
+			// 3. Statement 생성
+			PreparedStatement pstat = con.prepareStatement(q);
+			
+			//3-1. ?에 값 setting
+			pstat.setInt(1, b.getCount());
+			
+			//4. Query 전송
+			int rs = pstat.executeUpdate();
+			
+			//5. db에서 온 결과 처리
+			System.out.println(rs + "개의 레코드 수정!");
+			
+			//6. 마무리
+			pstat.close();
 			con.close();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return;
 	}
 }
