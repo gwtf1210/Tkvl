@@ -21,7 +21,9 @@ public class BoardController {
 
 	public void list(HttpServletRequest request, HttpServletResponse response) {
 		ArrayList<Board> list = dao.selectAll();
+		
 		request.setAttribute("list", list);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
 
 		try {
@@ -146,6 +148,7 @@ public class BoardController {
 	public void login(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		String id = req.getParameter("id");
+		
 		session.setAttribute("id", id);
 
 		try {

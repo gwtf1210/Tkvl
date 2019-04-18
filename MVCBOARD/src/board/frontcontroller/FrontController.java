@@ -23,8 +23,9 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 
-		String reqString = request.getServletPath();
+		String reqString = request.getServletPath(); // reqString 잘 받아오는지,
 		System.out.println(reqString);
+
 		if (reqString.equals("/list.bod")) {
 			controller.list(request, response);
 		} else if (reqString.equals("/read.bod")) {

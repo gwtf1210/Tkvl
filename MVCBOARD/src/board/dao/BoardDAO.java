@@ -20,6 +20,7 @@ public class BoardDAO implements BoardService {
 			// 1. JNDI를 사용해서 ConnectionPool 찾아오기
 			InitialContext context = new InitialContext();
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/mysql"); // 공유자원을 찾아오기
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,6 +85,8 @@ public class BoardDAO implements BoardService {
 	@Override
 	public void insert(Board b) {
 		try {
+			
+			
 			String q = "insert into board values(null,?,?,sysdate(),?,?,0)";
 
 			Connection con = ds.getConnection();
