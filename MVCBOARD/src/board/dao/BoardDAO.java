@@ -85,8 +85,6 @@ public class BoardDAO implements BoardService {
 	@Override
 	public void insert(Board b) {
 		try {
-			
-			
 			String q = "insert into board values(null,?,?,sysdate(),?,?,0)";
 
 			Connection con = ds.getConnection();
