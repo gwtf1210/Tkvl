@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mySQLDataService" class="com.di.db.MySQLDataServiceImpl">
+		<property name="id" value="tommy"></property> 
+		<property name="pass" value="ssafy"></property> 
+		<constructor-arg index="0" value="url:com.di.db.MySQLDataServiceImpl" /> 
+		<constructor-arg index="1" value="driver:com.di.db.MySQLDataServiceImpl" />
+	</bean>
+	
+	<bean id="oracleDataService" class="com.di.db.OracleDataServiceImpl">
+		<property name="id" value="billy"></property> 
+		<property name="pass" value="11111"></property> 
+		<constructor-arg index="0" value="url:com.di.db.OracleDataServiceImpl" /> 
+		<constructor-arg index="1" value="driver:com.di.db.OracleDataServiceImpl" />
+	</bean>
+
+</beans>
