@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="seoulZoo" class="com.di.animal.SeoulZoo">
+		<property name="tigers">
+			<array>
+				<bean id="tiger1" class="com.di.animal.Tiger">
+					<constructor-arg index="0" value="30" />
+					<property name="name" value="Tommy Tiger" />
+				</bean>
+
+				<bean id="tiger2" class="com.di.animal.Tiger">
+					<constructor-arg index="0" value="50" />
+					<property name="name" value="Billy Tiger" />
+				</bean>
+			</array>
+		</property>
+
+		<property name="lion">
+			<bean id="lion1" class="com.di.animal.Lion">
+				<constructor-arg index="0" value="20" />
+				<property name="name" value="Tommy Lion" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="londonZoo" class="com.di.animal.LondonZoo">
+		<property name="tiger">
+			<bean id="tiger1" class="com.di.animal.Tiger">
+				<constructor-arg index="0" value="30" />
+				<property name="name" value="Tommy Tiger" />
+			</bean>
+		</property>
+
+		<property name="lions">
+			<array>
+				<bean id="lion1" class="com.di.animal.Lion">
+					<constructor-arg index="0" value="20" />
+					<property name="name" value="Tommy Lion" />
+				</bean>
+
+				<bean id="lion2" class="com.di.animal.Lion">
+					<constructor-arg index="0" value="40" />
+					<property name="name" value="Billy Lion" />
+				</bean>
+
+
+
+			</array>
+		</property>
+	</bean>
+</beans>

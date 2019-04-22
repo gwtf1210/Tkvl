@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/di.xml</config>
 		<config>src/main/resources/collection.xml</config>
+		<config>src/main/resources/animal.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
