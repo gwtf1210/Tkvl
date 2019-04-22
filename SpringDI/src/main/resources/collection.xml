@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="col" class="com.di.collection.MyCollectionImpl">
+		<property name="array">
+			<array>
+				<value>100</value>
+				<value>200</value>
+				<value>300</value>
+			</array>
+		</property>
+
+		<property name="list">
+			<list>
+				<value>red</value>
+				<value>blue</value>
+				<value>yellow</value>
+				<value>red</value>
+				<value>white</value>
+			</list>
+		</property>
+
+		<property name="set">
+			<set>
+				<value>billy</value>
+				<value>june</value>
+				<value>anne</value>
+				<value>billy</value>
+			</set>
+		</property>
+
+		<property name="map">
+			<map>
+				<entry>
+					<key>
+						<value>num</value>
+					</key>
+					<value>12345</value>
+				</entry>
+				<entry>
+					<key>
+						<value>name</value>
+					</key>
+					<value>billy anne</value>
+				</entry>
+				<entry>
+					<key>
+						<value>address</value>
+					</key>
+					<value>singapore</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

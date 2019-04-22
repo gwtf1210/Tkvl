@@ -11,32 +11,56 @@ public class MyCollectionImpl implements MyCollection {
 	Set<String> set;
 	Map<String, String> map;
 
+	public void setArray(int[] array) {
+		this.array = array;
+	}
+
+	public void setList(List<String> list) {
+		this.list = list;
+	}
+
+	public void setSet(Set<String> set) {
+		this.set = set;
+	}
+
+	public void setMap(Map<String, String> map) {
+		this.map = map;
+	}
+
 	@Override
 	public void arrayInfo() {
+		System.out.println("------------------- num ---------------");
 		for (int num : array) {
-			System.out.println(num);
+			System.out.print(num + " ");
 		}
+		System.out.println();
 	}
 
 	@Override
 	public void listInfo() {
-		for (String name : list) {
-			System.out.println(name);
+		System.out.println("------------------- list ---------------");
+		for (String color : list) {
+			System.out.print(color + " ");
 		}
+		System.out.println();
 	}
 
 	@Override
 	public void setInfo() {
-		for (String color : set) {
-			System.out.println(color);
+		System.out.println("------------------- set ---------------");
+		for (String name : set) {
+			System.out.print(name + " ");
 		}
+		System.out.println();
 	}
 
 	@Override
 	public void mapInfo() {
 		Set<String> keys = map.keySet(); // map 안의 key만 추출
+		System.out.println("------------------- map ---------------");
 		for (String key : keys) {
-			System.out.println(key);
+			System.out.print(key + " ");
 		}
+		System.out.println();
 	}
 }
