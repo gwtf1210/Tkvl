@@ -2,27 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<bean id="bean1" class="com.di.MessageBeanEN">
-		<constructor-arg index="0" value="123"/> <!-- constructor injection -->
-		<constructor-arg index="1" value="tommy"/>
+		<constructor-arg index="0" value="123" /> <!-- constructor injection -->
+		<constructor-arg index="1" value="tommy" />
 	</bean>
-	
+
 	<bean id="bean2" class="com.di.MessageBeanKO">
 		<property name="num" value="789"></property> <!-- setter injection -->
 		<property name="name" value="jane"></property> <!-- setter injection -->
 		<property name="truck" ref="truck"></property>
 	</bean>
-	
+
 	<bean id="bean3" class="com.di.MessageBeanKO">
-		<property name="num" value="889"></property> <!-- setter injection -->
+		<property name="num" value="589"></property> <!-- setter injection -->
 		<property name="name" value="billy"></property> <!-- setter injection -->
-		<property name="truck" ref="truck"></property>
+		<property name="truck">
+			<bean class="com.di.Truck">
+				<constructor-arg name="num" value="9999" />
+				<property name="color" value="blue" />
+			</bean>
+		</property>
 	</bean>
-	
+
 	<bean id="truck" class="com.di.Truck">
-		<constructor-arg name="num" value="4567"/>
-		<property name="color" value="red"/>
-	</bean>	
+		<constructor-arg name="num" value="4567" />
+		<property name="color" value="red" />
+	</bean>
 
 </beans>

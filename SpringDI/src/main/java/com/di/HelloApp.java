@@ -14,5 +14,8 @@ public class HelloApp {
 
 		MessageBean bean2 = context.getBean("bean2", MessageBean.class); // interface Type으로 받아야함
 		bean2.sayHello();
+
+		MessageBean bean3 = context.getBean("bean3", MessageBean.class); // interface Type으로 받아야함
+		bean3.sayHello();
 	}
 }
