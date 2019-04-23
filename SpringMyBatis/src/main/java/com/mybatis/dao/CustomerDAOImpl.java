@@ -8,7 +8,7 @@ import com.mybatis.mapper.CustomerMapper;
 import com.mybatis.vo.Customer;
 
 // DAO(CRUD) 객체
-public class CustomerDAOImpl implements CutomerDAO {
+public class CustomerDAOImpl implements CustomerDAO {
 
 	@Autowired
 	CustomerMapper mapper;

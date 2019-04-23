@@ -4,18 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- spring 설정파일 -->
 <import resource="db.xml"/>
-
-
+<bean id="cus" class="com.mybatis.dao.CustomerDAOImpl"/>
 
 <!-- mybatis가 db작업할 객체 생성(SqlSession)  -->
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="ds"/>
-	<property name="typeAliasesPackage" value=""/>
+	<property name="typeAliasesPackage" value="com.mybatis.vo"/>
 </bean>
 
 <!-- mapper file을 찾아서 proxy 객체를 생성한 후 DAO에 주입시킴 -->
 <bean id="config" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	<property name="basePackage" value=""/>
+	<property name="basePackage" value="com.mybatis.mapper"/>
 </bean>
 
 
