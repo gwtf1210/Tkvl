@@ -1,4 +1,4 @@
-package com.di.animal;
+package com.di.animal.anno;
 
 public class Lion implements Animal {
 	int age;
