@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- spring 설정파일 -->
 <import resource="db.xml"/>
-<bean id="cus" class="com.mybatis.dao.CustomerDAOImpl"/>
+<bean id="boa" class="com.mybatis.dao.BoardDAOImpl"/>
 
 <!-- mybatis가 db작업할 객체 생성(SqlSession)  -->
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
