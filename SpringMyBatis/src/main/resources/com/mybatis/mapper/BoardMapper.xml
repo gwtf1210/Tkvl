@@ -24,20 +24,26 @@
 	<select id="selectAll" resultMap="BoardResult">
 		select * from board order by num
 	</select>
-	
-	
-	<select id="selectOne" resultMap="BoardResult" parameterType="String">
+
+
+	<select id="selectOne" resultMap="BoardResult"
+		parameterType="String">
 		select * from board where num = #{num}
 	</select>
-	
+
 	<insert id="insert" parameterType="Board">
-		insert into board values(null,#{pass},#{name},sysdate(),#{title},#{content},0)		
+		insert into board
+		values(null,#{pass},#{name},sysdate(),#{title},#{content},0)
 	</insert>
-	
+
 	<delete id="delete" parameterType="Board">
-		delete from board where num = #{num}
+		delete from board
+		where num = #{num}
 	</delete>
 
+	<update id="updateCount" parameterType="String">
+		update board set count=count+1 where num = #{num}
+	</update>
 
 </mapper>
 

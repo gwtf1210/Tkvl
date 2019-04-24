@@ -18,27 +18,38 @@
 	</resultMap>
 
 	<select id="selectAll" resultMap="CustomerResult">
-		select * from customer order by num
+		select * from customer order by
+		num
 	</select>
-	
-	<select id="selectOne" resultMap="CustomerResult" parameterType="String">
+
+	<select id="selectOne" resultMap="CustomerResult"
+		parameterType="String">
 		select * from customer where num = #{num}
 	</select>
-	
+
 	<insert id="insert" parameterType="Customer">
-		insert into customer values(#{num},#{name},#{address})		
+		insert into customer
+		values(#{num},#{name},#{address})
 	</insert>
-	
+
+	<insert id="insert2" parameterType="java.util.Map">
+		insert into customer
+		values(#{num},#{name},#{address})
+	</insert>
+
 	<delete id="delete" parameterType="String">
-		delete from customer where num = #{num}
+		delete from customer where num
+		= #{num}
 	</delete>
-	
+
 	<update id="update" parameterType="Customer">
-		update customer set address=#{address} where num = #{num}
+		update customer set
+		address=#{address} where num = #{num}
 	</update>
-	
-	<select id="findByAddress" resultMap="CustomerResult" parameterType="String">
-		select * from customer where address like #{address} 
+
+	<select id="findByAddress" resultMap="CustomerResult"
+		parameterType="String">
+		select * from customer where address like #{address}
 	</select>
 
 </mapper>

@@ -1,52 +1,54 @@
-package com.mybatis.dao;
+package com.mybatis.service;
 
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.mybatis.mapper.CustomerMapper;
+import com.mybatis.dao.CustomerDAO;
 import com.mybatis.vo.Customer;
 
-@Component
-public class CustomerDAOImpl implements CustomerDAO {
+@Component("service")
+public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	CustomerMapper mapper;
+	CustomerDAO dao;
 
 	@Override
 	public List<Customer> selectAll() {
-		return mapper.selectAll();
+		return dao.selectAll();
 	}
 
 	@Override
 	public Customer selectOne(String num) {
-		return mapper.selectOne(num);
+		return dao.selectOne(num);
 	}
 
 	@Override
 	public void insert(Customer c) {
-		mapper.insert(c);
+		dao.insert(c);
 	}
 
 	@Override
 	public void delete(String num) {
-		mapper.delete(num);
+		dao.delete(num);
 	}
 
 	@Override
 	public void update(Customer c) {
-		mapper.update(c);
+		dao.update(c);
 	}
 
 	@Override
 	public List<Customer> findByAddress(String address) {
-		return mapper.findByAddress(address);
+		return dao.findByAddress(address);
 	}
 
 	@Override
 	public void insert2(HashMap map) {
-		mapper.insert2(map);
+		dao.insert2(map);
 	}
 }

@@ -12,4 +12,6 @@ public interface BoardMapper {
 	public void insert(Board b);
 
 	public void delete(String num);
+
+	public void updateCount(String num);
 }

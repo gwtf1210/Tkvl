@@ -1,4 +1,4 @@
-package com.mybatis.dao;
+package com.mybatis.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.mybatis.vo.Customer;
 
 // CLIENT(CustomerApp.java)를 위한 인터페이스
-public interface CustomerDAO {
+public interface CustomerService {
 	public List<Customer> selectAll();
 
 	public Customer selectOne(String num);
