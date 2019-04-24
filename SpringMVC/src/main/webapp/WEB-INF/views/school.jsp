@@ -8,9 +8,9 @@
 </head>
 <body>
 <h1>
-	안녕! 세상아!
+	안녕! ${name}
 </h1>
 
-<P>  The name of city is ${city}. </P>
+<P>  너의 점수는 ${score} </P>
 </body>
 </html>

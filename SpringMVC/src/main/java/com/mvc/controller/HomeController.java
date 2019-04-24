@@ -11,29 +11,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+// http://localhost:8080/mvc/home.mvc --> DispatcherServlet
 @Controller
 public class HomeController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+	@RequestMapping(value = "/home.mvc", method = RequestMethod.GET)
+	public String home(Model model) {
+		// Model:map구조의 데이터 저장 객체
+		model.addAttribute("city", "seattle");
+		return "home"; // logical view name
 	}
+	
+	@RequestMapping(value = "/school.mvc", method = RequestMethod.GET)
+	public String school(Model model) {
+		// Model:map구조의 데이터 저장 객체
+		
+		model.addAttribute("name", "임현아");
+		model.addAttribute("score", "100");
+		
+		return "school"; // logical view name
+	}
+	
 	
 }
