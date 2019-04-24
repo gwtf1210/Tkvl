@@ -39,4 +39,19 @@ public class BoardDAOImpl implements BoardDAO {
 	public void updateCount(String num) {
 		mapper.updateCount(num);
 	}
+
+	@Override
+	public void modify(Board b) {
+		mapper.modify(b);
+	}
+
+	@Override
+	public List<Board> findByTitle(String word) {
+		return mapper.findByTitle(word);
+	}
+
+	@Override
+	public List<Board> findByName(String word) {
+		return mapper.findByName(word);
+	}
 }

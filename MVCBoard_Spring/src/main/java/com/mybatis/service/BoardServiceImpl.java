@@ -24,8 +24,10 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	@Transactional
-	public Board read(String num) {
-		dao.updateCount(num);
+	public Board read(String num, int type) {
+		if (type == 0) { // default
+			dao.updateCount(num);
+		}
 		return dao.read(num);
 	}
 
@@ -40,7 +42,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateCount(String num) {
-		dao.updateCount(num);
+	public void modify(Board b) {
+		dao.modify(b);
+	}
+
+	@Override
+	public List<Board> findByTitle(String word) {
+		return dao.findByTitle(word);
+	}
+
+	@Override
+	public List<Board> findByName(String word) {
+		return dao.findByName(word);
 	}
 }

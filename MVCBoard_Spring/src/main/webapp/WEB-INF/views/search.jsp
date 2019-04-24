@@ -53,6 +53,6 @@
 					</tr>
 				</c:forEach>
 		</table>
-		<br></br> <a href=insert.bod>새글쓰기</a>
+		<br></br> <a href=index.bod>초기화면</a>
 </body>
 </html>

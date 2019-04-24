@@ -22,13 +22,14 @@
 	</resultMap>
 
 	<select id="selectAll" resultMap="BoardResult">
-		select * from board order by num
+		select * from board order by
+		num
 	</select>
 
 
-	<select id="read" resultMap="BoardResult"
-		parameterType="String">
-		select * from board where num = #{num}
+	<select id="read" resultMap="BoardResult" parameterType="String">
+		select *
+		from board where num = #{num}
 	</select>
 
 	<insert id="insert" parameterType="Board">
@@ -38,13 +39,30 @@
 
 	<delete id="delete" parameterType="Board">
 		delete from board
-		where num = #{num}
+		where num =
+		#{num}
 	</delete>
 
 	<update id="updateCount" parameterType="String">
-		update board set count=count+1 where num = #{num}
+		update board set
+		count=count+1 where num = #{num}
 	</update>
 
+	<!-- homework -->
+	<update id="modify" parameterType="Board">
+		update board set
+		content=#{content}, title=#{title} where num=#{num}
+	</update>
+
+	<select id="findByTitle" parameterType="String" resultMap="BoardResult">
+		select * from board
+		where title like #{word} order by wdate desc
+	</select>
+
+	<select id="findByName" parameterType="String" resultMap="BoardResult">
+		select * from board
+		where name like #{word} order by wdate desc
+	</select>
 </mapper>
 
 

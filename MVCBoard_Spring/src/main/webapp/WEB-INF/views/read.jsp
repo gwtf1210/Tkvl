@@ -29,7 +29,8 @@
 				<TD COLSPAN=3><textarea readonly cols=120 rows=20>${bod.content}</textarea></TD>
 			</TR>
 		</TABLE>
-		<br> <br> <a href="delete.bod?num=${bod.num}">삭제하기</a>&nbsp;&nbsp;&nbsp;
+		<br> <br> <a href="modify.bod?num=${bod.num}">수정하기</a>&nbsp;&nbsp;&nbsp;
+		<br> <a href="delete.bod?num=${bod.num}">삭제하기</a>&nbsp;&nbsp;&nbsp;
 		<br> <a href="index.bod">초기화면</a>&nbsp;&nbsp;&nbsp;
 	</center>
 </body>

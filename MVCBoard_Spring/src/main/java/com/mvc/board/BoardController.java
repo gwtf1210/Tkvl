@@ -29,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value = "/read.bod", method = RequestMethod.GET)
 	// public String list(Model model, String num) { // 다른 방법
 	public String list(Model model, @RequestParam(value = "num") String number) { // 테이블안의 모든 데이터 검색해서 리턴해줌
-		Board Board = service.read(number);
+		Board Board = service.read(number, 0);
 		model.addAttribute("bod", Board);
 		return "read";
 	}
@@ -53,5 +53,38 @@ public class BoardController {
 	public String delete(String num) { // 테이블안의 모든 데이터 검색해서 리턴해줌
 		service.delete(num);
 		return "redirect:/index.bod";
+	}
+
+	// homework
+	@RequestMapping(value = "/modify.bod", method = RequestMethod.GET)
+	public String modify(Model model, @RequestParam(value = "num") String number) { // 테이블안의 모든 데이터 검색해서 리턴해줌
+		Board board = service.read(number, 1);
+		model.addAttribute("bod", board);
+		System.out.println(board.getContent());
+		return "modify";
+	}
+
+	@RequestMapping(value = "/modify.bod", method = RequestMethod.POST)
+	public String modifyProcess(@ModelAttribute Board b) { // 테이블안의 모든 데이터 검색해서 리턴해줌
+		Board bod = new Board(b.getNum(), b.getPass(), b.getName(), "", b.getTitle(), b.getContent(), "0");
+		service.modify(bod);
+		return "redirect:/index.bod";
+	}
+
+	@RequestMapping(value = "/search.bod", method = RequestMethod.POST)
+	public String search(Model model, String key, String word) { // 테이블안의 모든 데이터 검색해서 리턴해줌
+		List<Board> list = null;
+
+		System.out.println(key + ", " + word);
+		word = "%" + word + "%";
+		if (key.equals("TITLE")) {
+			list = service.findByTitle(word);
+
+		} else if (key.equals("NAME")) {
+			list = service.findByName(word);
+		}
+
+		model.addAttribute("list", list);
+		return "search";
 	}
 }
