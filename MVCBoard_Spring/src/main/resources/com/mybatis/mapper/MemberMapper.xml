@@ -18,7 +18,7 @@
 		<result column="address" property="address" />
 	</resultMap>
 
-	<select id="login" resultMap="MemberResult" parameterType="String">
+	<select id="selectOne" resultMap="MemberResult" parameterType="String">
 		select * from mvc_member where id=#{id}
 	</select>
 

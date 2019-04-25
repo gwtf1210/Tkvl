@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mvc.mapper.BoardMapper">
+
+	<!-- ResultMap & Query tags... -->
+	<resultMap type="AddressBook" id="AddressBookResultMap">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="phone" property="phone" />
+		<result column="address" property="address" />
+		<result column="company" property="company" />
+	</resultMap>
+
+	<select id="list" resultMap="AddressBookResultMap">
+		select * from addressbook order by
+		id
+	</select>
+
+	<select id="detail" resultMap="AddressBookResultMap">
+		select * from addressbook where
+		id=#{id}
+	</select>
+
+	<insert id="insert" parameterType="AddressBook">
+		insert into AddressBook
+		values(null,#{name},#{address},#{phone},#{company})
+	</insert>
+
+	<select id="loginCheck" resultMap="AddressBookResultMap"
+		parameterType="String">
+		select * from addressbook where id=#{id}
+	</select>
+
+	<delete id="delete" parameterType="String">
+		delete from addressbook where
+		id=#{id}
+	</delete>
+
+	<select id="searchByName" parameterType="String"
+		resultMap="AddressBookResultMap">
+		select * from addressbook where name like #{name}
+	</select>
+
+	<select id="searchByCompany" parameterType="String"
+		resultMap="AddressBookResultMap">
+		select * from addressbook where company like #{company}
+	</select>
+
+	<select id="searchByAddress" parameterType="String"
+		resultMap="AddressBookResultMap">
+		select * from addressbook where address like #{address}
+	</select>
+
+</mapper>
+
+
