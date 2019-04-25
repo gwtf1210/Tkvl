@@ -8,6 +8,8 @@
 </HEAD>
 <BODY>
 	<center>
+	
+		<jsp:include page="nav_login.jsp" />
 		<form method='post' action='insert.bod'>
 			<table>
 				<tr>

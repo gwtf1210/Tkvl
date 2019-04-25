@@ -2,6 +2,8 @@ package com.mvc.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,5 +88,21 @@ public class BoardController {
 
 		model.addAttribute("list", list);
 		return "search";
+	}
+
+	@RequestMapping(value = "loginProcess.bod", method = RequestMethod.POST)
+	public String loginProcess(HttpSession session, String id, String pass) {
+		
+		
+		
+		System.out.println(id);
+		session.setAttribute("id", id);
+		return "redirect:/index.bod";
+	}
+	
+	@RequestMapping(value = "logoutProcess.bod", method = RequestMethod.GET)
+	public String logoutProcess(HttpSession session) {
+		session.setAttribute("id", null);
+		return "redirect:/index.bod";
 	}
 }

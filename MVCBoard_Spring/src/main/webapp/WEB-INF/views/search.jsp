@@ -5,6 +5,7 @@
 <html>
 <body>
 	<center>
+		<jsp:include page="nav_login.jsp" />
 		<h1>JSP 게시판</h1>
 		<br>
 		<div class="container main-contents">

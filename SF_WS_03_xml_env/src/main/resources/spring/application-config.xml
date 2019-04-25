@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    
+    
+    
+    
+<!--  빈을 등록 하세요.    -->
+   
+   
+   
+   
+   
+   
+<!-- properties 파일 인식을 위한 설정 -->
+<context:property-placeholder  location="classpath:config.properties"/>
+
+<!-- Data Source  => DB Connection  -->
+ <bean id="dataSource" 
+       class="org.apache.commons.dbcp.BasicDataSource" 
+       destroy-method="close">
+   <property name="driverClassName"  value="${db.driverClassName}"/>
+   <property name="url"  value="${db.url}"/>
+   <property name="username"  value="${db.userName}"/>
+   <property name="password"  value="${db.password}"/>
+ </bean>
+
+<!-- MyBatis를 위한 Factory 설정  -->
+<bean id="sqlSessionFactory" 
+      class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"/>
+	<!--MyBatis 설정 파일  지정   -->
+	<property name="configLocation" 
+		value="classpath:mybatis/mybatis_config.xml"/>
+</bean>
+
+<!-- MyBatis를 위한 SqlSessionTemplate 등록 -->
+ <bean id="sessionTemplate" 
+ 	  class="org.mybatis.spring.SqlSessionTemplate">
+ 	<constructor-arg ref="sqlSessionFactory"/>	  
+ </bean>
+</beans>

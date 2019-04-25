@@ -8,6 +8,7 @@
 </HEAD>
 <BODY>
 	<center>
+		<jsp:include page="nav_login.jsp" />
 		<form method='post' action='modify.bod'>
 			<input hidden="true" name='num' value="${bod.num}">
 			<table>

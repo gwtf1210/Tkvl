@@ -5,6 +5,7 @@
 <html>
 <body>
 	<center>
+		<jsp:include page="nav_login.jsp" />
 		<h1>글 읽기</h1>
 		<p>
 		<TABLE BORDER=2 CELLSPACING=2 CELLPADDING=2>

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <body>
 	<center>
+		<jsp:include page="nav_login.jsp" />
 		<h1>JSP 게시판</h1>
 		<br>
 		<div class="container main-contents">
