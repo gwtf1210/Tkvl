@@ -26,7 +26,6 @@
 		num
 	</select>
 
-
 	<select id="read" resultMap="BoardResult" parameterType="String">
 		select *
 		from board where num = #{num}

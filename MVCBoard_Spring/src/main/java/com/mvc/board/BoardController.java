@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mybatis.service.BoardService;
+import com.mybatis.service.MemberService;
 import com.mybatis.vo.Board;
+import com.mybatis.vo.Member;
 
 @Controller
 public class BoardController {
 
 	@Autowired
 	BoardService service;
+	
+	@Autowired
+	MemberService mservice;
 
 	@RequestMapping(value = "/index.bod", method = RequestMethod.GET)
 	public String list(Model model) { // 테이블안의 모든 데이터 검색해서 리턴해줌
@@ -92,12 +97,15 @@ public class BoardController {
 
 	@RequestMapping(value = "loginProcess.bod", method = RequestMethod.POST)
 	public String loginProcess(HttpSession session, String id, String pass) {
-		
-		
-		
 		System.out.println(id);
-		session.setAttribute("id", id);
-		return "redirect:/index.bod";
+		Member m = mservice.selectOne(id);
+		System.out.println(m.getPass());
+		if(m.getPass().equals(pass)) {
+			session.setAttribute("id", id);
+			return "redirect:/index.bod";
+		}else {
+			return "redirect:/login.bod";
+		}
 	}
 	
 	@RequestMapping(value = "logoutProcess.bod", method = RequestMethod.GET)
