@@ -26,7 +26,7 @@ public class AddressBookController {
 	}
 
 	@RequestMapping(value = "/login.addr", method = RequestMethod.POST)
-	public String loginProcess(HttpSession session, Model model, String id, String name) {
+	public String loginProcess(HttpSession session, Model model, String id, String name) throws Exception {
 		System.out.println(id + ", " + name);
 		AddressBook member = service.loginCheck(id);
 		if (member != null && member.getName().equals(name)) {
@@ -34,7 +34,8 @@ public class AddressBookController {
 			return "redirect:/list.addr";
 		} else {
 			model.addAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
-			return "login";
+			throw new Exception();
+//			return "login";
 		}
 	}
 
@@ -101,9 +102,8 @@ public class AddressBookController {
 
 	//Controller 안에 예외처리하는 메소드 추가하기
 	@ExceptionHandler(Exception.class)
-	public String handleException() {
+	public String handleException(Exception e) {
 		return "error"; //view 이름
 	}
-
 
 }
