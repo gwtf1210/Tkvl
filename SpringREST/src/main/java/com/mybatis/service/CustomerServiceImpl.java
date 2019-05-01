@@ -4,14 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.mybatis.dao.CustomerDAO;
 import com.mybatis.vo.Customer;
 
-@Component("service")
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired

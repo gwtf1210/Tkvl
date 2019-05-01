@@ -33,9 +33,8 @@ public class CustomerRestController {
 	}
 
 	@RequestMapping(value = "/customers/{num}", method = RequestMethod.DELETE)
-	public String deleteCustomer(@PathVariable String num) {
+	public void deleteCustomer(@PathVariable String num) {
 		service.delete(num);
-		return "delete success";
 	}
 
 	@RequestMapping(value = "/customers", method = RequestMethod.POST, produces = { "application/json;charset=euc-kr" })

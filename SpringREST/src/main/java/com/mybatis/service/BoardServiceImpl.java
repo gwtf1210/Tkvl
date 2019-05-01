@@ -10,7 +10,7 @@ import com.mybatis.dao.BoardDAO;
 import com.mybatis.vo.Board;
 
 /**  */
-@Service("bservice")
+@Service
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
@@ -23,9 +23,11 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	@Transactional
-	public Board selectOne(String num) {
-		dao.updateCount(num);
-		return dao.selectOne(num);
+	public Board read(String num, int type) {
+		if (type == 0) { // default
+			dao.updateCount(num);
+		}
+		return dao.read(num);
 	}
 
 	@Override
@@ -36,5 +38,20 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(String num) {
 		dao.delete(num);
+	}
+
+	@Override
+	public void modify(Board b) {
+		dao.modify(b);
+	}
+
+	@Override
+	public List<Board> findByTitle(String word) {
+		return dao.findByTitle(word);
+	}
+
+	@Override
+	public List<Board> findByName(String word) {
+		return dao.findByName(word);
 	}
 }

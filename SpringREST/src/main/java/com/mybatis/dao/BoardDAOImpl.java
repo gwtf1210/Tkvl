@@ -3,7 +3,6 @@ package com.mybatis.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.mybatis.mapper.BoardMapper;
@@ -21,8 +20,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public Board selectOne(String num) {
-		return mapper.selectOne(num);
+	public Board read(String num) {
+		return mapper.read(num);
 	}
 
 	@Override
@@ -38,5 +37,20 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void updateCount(String num) {
 		mapper.updateCount(num);
+	}
+
+	@Override
+	public void modify(Board b) {
+		mapper.modify(b);
+	}
+
+	@Override
+	public List<Board> findByTitle(String word) {
+		return mapper.findByTitle(word);
+	}
+
+	@Override
+	public List<Board> findByName(String word) {
+		return mapper.findByName(word);
 	}
 }
