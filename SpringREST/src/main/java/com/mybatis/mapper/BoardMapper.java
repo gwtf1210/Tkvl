@@ -14,7 +14,7 @@ public interface BoardMapper {
 	public void delete(String num);
 
 	public void updateCount(String num);
-	
+
 	public void modify(Board b);
 
 	public List<Board> findByTitle(String word);
