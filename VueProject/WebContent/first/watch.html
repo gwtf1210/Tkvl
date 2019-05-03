@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<input />
+	</div>
+	<script type="text/javascript">
+		//Vue 객체 생성  
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				message : 'hello, vue!!!'
+			},
+			watch : {
+				message : function(val) {
+					console.log('data changed...' + val)
+				}
+			}
+		});
+	</script>
+</body>
+</html>

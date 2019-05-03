@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app1">
+		<h1>{{message}}</h1>
+	</div>
+
+	<div id="app2"></div>
+	<div id="app3"></div>
+	<div id="app4"></div>
+	
+<!-- template 선언, id 부여하고 div가 꼭 있어야 함. -->
+<script type="text/x-template" id="atemplate">
+	<div><h1>template -1 {{message}}</h1></div>
+</script>
+
+<!-- template 선언, id 부여하고 div가 꼭 있어야 함. -->
+<script id="btemplate">
+	<div><h1>my car is amazing....!{{message}}</h1></div>
+</script>
+
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : "#app1",
+			data : {
+				message : 'hello, world!'
+			}
+		});
+
+		var vm2 = new Vue({
+			el : "#app2",
+			data : {
+				message : 'welcome to my world!'
+			},
+			template : '<h1>hello, vue {{message}}</h1>'
+		});
+
+		var vm3 = new Vue({
+			el:"#app3",
+			data:{
+				message:'gogo, vue'
+			},
+			template:'#atemplate' // Vue 라이브러리가 template에서 정의된 내용을 render() 함수로 전달해서 화면을 그려줌.			
+		});
+		
+		var vm4 = new Vue({
+			el:"#app4",
+			data:{
+				message:'my car is porshe...!'
+			},
+			template:'#btemplate' // Vue 라이브러리가 template에서 정의된 내용을 render() 함수로 전달해서 화면을 그려줌.
+		});
+
+	</script>
+</body>
+</html>

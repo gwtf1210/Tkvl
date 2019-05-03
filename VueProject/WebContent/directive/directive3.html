@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>My Super Heroes</h1>
+		<ul class="list-group">
+			<li class="list-group-item" v-for="hero in heroes">
+				{{hero | toSentence}}
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : '.container',
+			data : {
+				heroes : [
+					{firstname : 'Bruce', lastname : 'Wayne', role : 'Batman'},
+					{firstname : 'Clark', lastname : 'Kent', role : 'Superman'},
+					{firstname : 'Jay', lastname : 'Gerrick', role : 'Flash'},
+					{firstname : 'Peter', lastname : 'Parker', role : 'Spiderman'}
+				]
+			},
+			filters : { // 데이터 가공
+				toSentence(hero) {
+					return hero.firstname + " " + hero.lastname + " is " + hero.role; 
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<my-global></my-global>
+		<my-local-1></my-local-1>
+		<my-local-2></my-local-2>
+	</div>
+	<hr>
+	<div id="app2">
+		<my-global></my-global>
+		<my-local-1></my-local-1>
+		<my-local-2></my-local-2>
+	</div>
+	<template id=tmp1>
+	<div>
+		<h2>global component~</h2>
+	</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component('my-global', {
+			template : '#tmp1'
+		})
+		var local1 = {
+			template : '<h3>local component 입니다.'
+		}
+		var vm = new Vue({
+			el : "#app",
+			components : { //local component 등록   
+				'my-local-1' : {
+					template : '<div>local component입니다</div>'
+				},
+				'my-local-2' : local1
+			}
+		});
+		var vm2 = new Vue({
+			el : "#app2"
+		})
+	</script>
+</body>
+</html>

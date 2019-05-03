@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+	<div id="app">
+		<h1>v-for1</h1>
+		<hr>
+		
+		<ul>
+			<li v-for="i in 10">4 * {{i}} = {{i*4}}</li>
+		</ul>
+		<hr>
+
+		<ul>
+			<li v-for="book in books">I like {{book}}</li>
+		</ul>
+		<hr>
+
+		<ul>
+			<li v-for="(value, key, index) in story">{{index + 1}}. {{key}} : {{value}}</li>
+		</ul>
+		<hr>
+		
+		<ul>
+			<li v-for="(s, index) in stories">{{index + 1}}. {{s.writer}} : {{s.name}}</li>
+		</ul>
+		
+		
+
+	</div>
+
+	<script type="text/javascript">
+		// Vue 객체 생성
+		
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				books : [ '햄릿', '콩쥐 팥쥐', '누가 내 치즈를 옮겼을까', '아홉살 인생' ],
+				story : {
+					author : '셰익스피어',
+					title : '로미오와 줄리엣',
+					publisher : 'green house'
+				},
+				stories : [
+					{
+						writer : 'james lee',
+						name : 'good job'
+					}, 
+					{
+						writer : 'billy jones',
+						name : 'how are you, today?'
+					},
+					{
+						writer : 'david min',
+						name : 'farewell to arms'
+					}
+				]
+				
+			}
+		});
+	</script>
+</body>
+</html>

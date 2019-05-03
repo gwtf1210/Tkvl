@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>calculator</h1>
+		<form class="form-inline">
+			<input v-model.number="val1" class="form-control">
+			<select v-model="oper" class="form-control">
+				<option>+</option>
+				<option>-</option>
+				<option>*</option>
+				<option>/</option>
+			</select>
+			<input v-model.number="val2" class="form-control">
+			<!-- prevent를 안하면 type이 submit이어서 새로고침이 된당. -->
+			<button class="btn btn-primary" type="submit" @click.prevent="calcul">calculate</button>
+			<h2>result : {{val1}} {{oper}} {{val2}} = {{val3}} </h2>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : '.container',
+			data : {
+				val1 : 1,
+				val2 : 2,
+				val3 : 0,
+				oper : "+"
+			}, 
+			methods : {
+				calcul : function() {
+					this.val3 = eval(this.val1 + this.oper + this.val2);
+				}
+			}
+			
+		});
+	</script>
+</body>
+</html>
