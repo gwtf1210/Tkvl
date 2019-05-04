@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml mapper와 짝이 되서 돌아갈 자바명, 패키지명을 적어주면 된다. -->
+<mapper namespace="com.mybatis.mapper.EmpMapper">
+
+	<select id="selectAll" resultType="Emp">
+		select * from s_emp order by
+		id
+	</select>
+
+	<select id="selectOne" resultType="Emp" parameterType="String">
+		select *
+		from s_emp where id=#{id}
+	</select>
+
+	<select id="insert" parameterType="Emp">
+		insert into s_emp (id,name)
+		values(#{id},#{name})
+	</select>
+
+	<select id="findByName" resultType="Emp" parameterType="String">
+		select *
+		from s_emp where name like #{name}
+	</select>
+
+	
+</mapper>
+
+
