@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./table.css" />
+<title>SSAFY</title>
+<script src="https://unpkg.com/vue"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id='app'>
+		<div class='headtitle'>
+			<h2>SSAFY HRM</h2>
+		</div>
+		<div class='search_box'>
+			<router-link to="/route1">사원추가</router-link>
+			<router-link to="/route2">이름으로 찾기</router-link>
+			<router-link to="/route3">아이디로 찾기</router-link>
+			<router-link to="/route4">모든사원 보기</router-link>
+		</div>
+
+		<router-view></router-view>
+
+	</div>
+	<template id="listhrmtemplate">
+	<div>
+		<div>
+			<table class='list_table'>
+				<col width="10%">
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+				<col width="10%">
+				<tr>
+					<th>사원 아이디</th>
+					<th>사원명</th>
+					<th>부서</th>
+					<th>직책</th>
+					<th>연봉</th>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>홍길동</td>
+					<td>영업부</td>
+					<td>사원</td>
+					<td>12345</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+	</template>
+
+	<template id="idhrmtemplate">
+	<div>
+		<div class='search_box'>
+			아이디로 찾기 : <input type="text" name='id' />
+		</div>
+		<table class='list_table'>
+			<col width="10%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="10%">
+			<tr>
+				<th>사원 아이디</th>
+				<th>사원명</th>
+				<th>부서</th>
+				<th>직책</th>
+				<th>연봉</th>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>홍길동</td>
+				<td>영업부</td>
+				<td>사원</td>
+				<td>12345</td>
+			</tr>
+			<tr>
+		</table>
+		<div>
+	</template>
+
+	<template id="namehrmtemplate">
+	<div>
+		<div class='search_box'>
+			이름으로 찾기 : <input type="text" name='name' />
+		</div>
+		<table class='list_table'>
+			<col width="10%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="10%">
+			<tr>
+				<th>사원 아이디</th>
+				<th>사원명</th>
+				<th>부서</th>
+				<th>직책</th>
+				<th>연봉</th>
+			</tr>
+		</table>
+	</div>
+	</template>
+
+	<template id="addhrmtemplate">
+	<div>
+		<div>
+			<form action="" method="post" id="_frmForm" name="frmForm">
+				<table class="content_table">
+					<colgroup>
+						<col style="width: 30%;" />
+						<col style="width: 70%;" />
+					</colgroup>
+					<tr>
+						<th>이름</th>
+						<td><input data-msg="이름" type="text" name="name" id="_name"
+							size="30" /></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input data-msg="이메일" type="text" name="mailid"
+							id="_mailid" size="20" /></td>
+					</tr>
+					<tr>
+						<th>고용일</th>
+						<td><input data-msg="고용일" type="date" name="start_date"
+							id="_start_date" size="30" /></td>
+					</tr>
+					<tr>
+					<tr>
+						<th>월급</th>
+						<td><input data-msg="월급" type="number" name="salary"
+							id="_salary" size="30" min="0" /></td>
+					</tr>
+					<tr>
+						<th>커미션</th>
+						<td><input data-msg="커미션" type="number" name="commission_pct"
+							id="_commission_pct" size="30" min="0" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="height: 50px; text-align: center;">
+							<button type="submit" name="button">사원추가</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	</template>
+
+	<script type="text/javascript">
+    //컴포넌트 선언
+        var listhrm = Vue.component('listhrm',{
+            template: '#listhrmtemplate'
+        });
+        var idhrm = Vue.component('idhrm',{
+            template: '#idhrmtemplate'
+        });
+        var detailhrm = Vue.component('detailhrm',{
+            template: '#detailtemplate'
+        });
+        var namehrm = Vue.component('namehrm',{
+            template: '#namehrmtemplate'
+        });
+        var addhrm = Vue.component('addhrm',{
+            template: '#addhrmtemplate'
+        });
+        
+		//뷰라우터 객체 생성: 라우터 경로와 컴포넌트 맵핑
+           const router = new VueRouter({
+                  routes: [
+                           { path: '/route1', component: { template: addhrmtemplate } },
+                           { path: '/route2', component:  { template: namehrmtemplate} },
+                           { path: '/route3', component: { template: idhrmtemplate } },
+                           { path: '/route4', component: { template: listhrmtemplate} }
+            ]});  
+        
+        var App=new Vue({//뷰객체 생성하면서 라우터를 선언
+          el: '#app',
+          router //사용될 라우터 선언
+        })
+ </script>
+</body>
+</html>

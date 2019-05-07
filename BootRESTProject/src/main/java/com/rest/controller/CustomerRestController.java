@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.mybatis.service.CustomerService;
 import com.mybatis.vo.Customer;
 
 // @RestController : @Controller + @ResponseBody
+@CrossOrigin(origins="*", maxAge=6000)
 @RestController
 public class CustomerRestController {
 
@@ -38,7 +40,7 @@ public class CustomerRestController {
 	}
 
 	@RequestMapping(value = "/customers", method = RequestMethod.POST, produces = { "application/json;charset=euc-kr" })
-	public Map insertCustomer(@RequestBody Customer c) { // @RequestBody:Request¿¡ ´ã°ÜÁ® ¼­¹ö·Î Àü¼ÛµÇ´Â µ¥ÀÌÅÍ(json)À» ÀÚ¹Ù °´Ã¼·Î º¯È¯ÇØ ÁÜ.
+	public Map insertCustomer(@RequestBody Customer c) { // @RequestBody:Requestï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÛµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(json)ï¿½ï¿½ ï¿½Ú¹ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½.
 															// json -> java
 		service.insert(c);
 		HashMap<String, String> map = new HashMap<String, String>();
