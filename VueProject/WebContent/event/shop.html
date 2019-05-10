@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SSAFY</title>
+
+<script src="https://unpkg.com/vue"></script>
+<style type="text/css">
+@import url("../css/shop.css");
+</style>
+</head>
+<body>
+	<div class="nav-bar"></div>
+	<div id="app">
+		<div class="product">
+			<div class="product-image">
+			<!-- v-bind:src 는 :src로 줄여서 쓸 수 있다. -->
+				<img v-bind:src="image" />
+			</div>
+
+			<div class="product-info">
+				<h1>{{product}}</h1>
+				
+				<p v-if="inStock">In Stock</p>
+				<p v-else="inStock">Out of Stock</p>
+				
+				<span v-if="isSale">On Sale!</span> 
+				<p>{{description}}</p> 
+				<ul>
+					<li v-for="detail in details">{{detail}}</li>
+				</ul>
+
+				<div class="color-box" v-for="option in options" v-on:mouseOver="change(option)" :style="{backgroundColor : option.optionColor}">
+					{{option.optionColor}}
+				</div>				
+
+				<button v-on:click="add">Add </button>
+				<button v-on:click="remove">Remove</button>
+
+
+				<div class="cart">
+					<p>Cart({{cart}})</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		//Create a new button and method to decrement the value of `cart`.
+
+		var app = new Vue({
+			el : '#app',
+			data : {
+				product : 'Blouse',
+				image : '../img/blueBlouse.jpg',
+				inStock : true,
+				isSale : true,
+				
+				description : '깔끔한 블라우스! 단추도 제대로 달렸습니다.',
+
+				details : [ '면 80%', '폴리에스테르 20% ', '남녀 공용' ],
+				options : [ {
+					optionId : 2234,
+					optionColor : 'violet',
+					optionImage : '../img/violetBlouse.jpg'
+				}, {
+					optionId : 2235,
+					optionColor : 'blue',
+					optionImage : '../img/blueBlouse.jpg'
+				} ],
+				cart : 0
+			},
+			methods : {
+				change : function(option) {
+					this.image = option.optionImage;
+				},
+				add : function() {
+					this.cart++;
+				},
+				remove : function() {
+					if(this.cart > 0) this.cart--;
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

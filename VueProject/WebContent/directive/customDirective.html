@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="app">
+	<div v-mydir="{color:'red',fontSize: '30pt', border:'2px', borderStyle:'solid'}">hello, mydir</div>
+	<div v-mydir="{color:'green',fontSize: '50pt', border:'5px', borderStyle:'dotted'}">bye, mydir</div>
+</div>
+
+	<script type="text/javascript">
+	// 사용자 정의 디렉티브 선언. v-
+	Vue.directive("mydir",{
+		 // el:디렉티브 적용할 엘리먼트, binding: 디렉티브 아규먼트로 들어오는 데이터. nodename : 디렉티브를 포함하는 태그
+		bind(el, binding, nodename){
+			el.style.color = binding.value.color;
+			el.style.fontSize = binding.value.fontSize;
+			el.style.textAlign ="right";
+			el.style.border = binding.value.border;
+			el.style.borderStyle = binding.value.borderStyle;
+			
+			console.log(nodename.tagname)
+			console.log(nodename.el)
+		}
+	});
+		var vm = new Vue({
+			el : "#app"
+	
+		});
+	</script>
+</body>
+</html>

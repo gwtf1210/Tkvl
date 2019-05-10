@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-lazy-init="true" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- spring 설정파일 -->
+	<!-- lazy-init="true" : 요청 들어올 때 생성하겠다. 위에서 정의하면 일일이 하지 않아도 된다. -->
+	<bean id="bean1" class="com.sample3.MessageBeanKO" scope="prototype"/>
+	<bean id="bean2" class="com.sample3.MessageBeanEN"/>
+</beans>

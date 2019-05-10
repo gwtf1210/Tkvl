@@ -1,0 +1,34 @@
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>Upvote</title>
+<script src="https://unpkg.com/vue"></script>
+
+<style>
+    .container {
+        padding-top: 75px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+    	<!-- v-on:은 @로 대체할 수 있다. v-on:click -> @click -->
+        <button class="btn btn-primary btn-lg btn-block" @click="upvote">
+            Upvote! {{upvotes}}
+        </button>
+    </div>
+    
+    <script type="text/javascript">
+    	var vm = new Vue({
+    		el : ".container",
+    		data : {
+    			upvotes : 1
+    		},
+    		methods : {
+    			upvote : function() {
+    				this.upvotes++;
+    			}
+    		}
+    	});
+    </script>
+</body>

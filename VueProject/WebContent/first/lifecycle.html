@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app"></div>
+
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				message : 'hello, vue'
+			},
+			beforeCreate : function() {
+				console.log('beforeCreate')
+			},
+			
+			// data, method 사용 가능. 객체 생성 후에 호출되는 단계로 서버에서 데이터 받아오는 로직을 둔다.
+			created : function() {
+				console.log('created')
+			},
+			
+			// 생성한 객체와 화면이 연결된 후 실행되는 함수. 화면 제어 내용을 둔다.
+			mounted : function() {
+				console.log('mounted')
+			},
+			
+			// 데이터 변경이된 후에 다시 화면을 그릴 때 실행되는 함수. 
+			updated : function() {
+				console.log('updated')
+			}
+			
+		});
+	</script>
+</body>
+</html>

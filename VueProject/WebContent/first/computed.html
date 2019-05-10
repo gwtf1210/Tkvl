@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<!-- event 지정은 method로 한다. computed로는 지정할 수 없다. -->
+		<!-- <button v-on:click="hello">reverse</button>  -->
+		<p>{{hello}}</p>
+		<button v-on:click="bye">reverse</button>
+	</div>
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				message : 'hello, vue!'
+			},
+			// computed 는 이미 실행이 한번 되어있다. -> method 와 같은 개념이 아니라,
+			// 알아서 자동 실행되므로 이벤트 처리 로직 등에는 사용 불가.
+			// 뷰 객체 생성시에 실행되며, (자신이 작업했던) 데이터 변경시 자동 실행된다
+			computed : {
+				hello : function() {
+					console.log('computed');
+					//this.message = this.message.split('').reverse().join('');
+					return this.message.split('').reverse().join('');
+				}
+			},
+			methods : {
+				bye : function() {
+					console.log('methods');
+					this.message = this.message.split('').reverse().join('');
+					return this.message;
+				}
+			},
+			// computed(간단한 연산) 와 비슷하지만, 대게 시간이 오래걸리는 작업들을 많이 넣어둔다.
+			// 예를 들어, ajax와 같이 데이터를 서버에 보내야 하는 경우(비동기 처리) 등에 적합하다.
+			watch : {
+				
+			}
+		});
+	</script>
+</body>
+</html>

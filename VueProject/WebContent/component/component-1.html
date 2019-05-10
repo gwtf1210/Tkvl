@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+	<story></story>
+	<story></story>
+	<story></story>
+	<story></story>
+</div>
+<!-- component가 사용할 template(브라우저에 그려질 화면) 정의 -->
+<!-- 반드시 DIV가 있어야함. 틀린말임 -->
+<template id="mytemplate">
+	<div><h1>my dog is cute!!!</h1></div>
+</template>
+
+	<script type="text/javascript">
+		
+	<!-- component 정의(global component 방식) -->
+	Vue.component('story',{
+		template:'#mytemplate'
+	});
+		
+	
+	var vm = new Vue({
+		el:"#app"
+	});
+
+	</script>
+</body>
+</html>

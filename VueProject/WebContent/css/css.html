@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+<style type="text/css">
+.red {
+	color: red;
+}
+
+.blue {
+	color: blue;
+}
+
+.myfont {
+	font-family: 궁서체;
+	font-size: 30pt;
+}
+</style>
+
+</head>
+<body>
+<div id="app">
+	<h1 class="myfont" v-bind:class="{red:flag}">hello...</h1>
+	<h1 class="myfont" v-bind:class="{red:flag2}">hello2...</h1>
+
+
+</div>
+
+
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				flag:true,
+				flag2:true
+			}
+
+		});
+	</script>
+</body>
+</html>

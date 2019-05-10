@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{ message }}</p>
+		<div><h3>{{message | toH3}}</h3></div>
+		<div><h3>{{message | toUpper}}</h3></div>
+		<button v-on:click = "sayHello">say hello</button>
+		<button v-on:click = "reverse">do reverse</button>
+	</div>
+
+	<script type="text/javascript">
+		var model = { message : 'hello, vue' };
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : "#app",
+			data : model,
+			methods : {
+				sayHello : function() {
+					// 항상 this.를 붙여서 내꺼라고 명시해줘야 한다.
+					this.message = this.message + ", how are you?";
+					return this.message;
+				},
+				reverse : function() {
+					this.message = this.message.split('').reverse().join('');
+					return this.message;
+				}
+			},
+			filters : { // 데이터 가공
+				toH3() {
+					var s = "";
+					for(i=0; i<3; i++) {
+						s+="ssafy";
+					}
+					return s;
+				},
+				// val 에 message 가 들어옴.
+				toUpper(val) {
+					return val.toUpperCase();
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+	<my-component></my-component>
+</div>
+
+
+<template id="my-template">
+	<div>global component 입니다.</div>
+</template>
+
+<template id="h1-template">
+	 <div><h1> h1 global component 입니다.</h1></div>
+</template>
+
+<script type="text/javascript">
+	Vue.component("my-component",{
+		template:'#my-template'
+	});
+	
+	Vue.component("h1-component",{
+		template:'#h1-template'
+	});
+
+// global component 등록하기
+// component name : my-component
+// template 내용 : <div>global component 입니다.</div>
+
+// component name : h1-component
+// template 내용 : <div><h1> h1 global component 입니다.</h1></div>
+
+	var vm = new Vue({
+		el : "#app"
+	});
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

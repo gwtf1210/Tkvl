@@ -14,7 +14,7 @@ public class Lion implements Animal {
 
 	@Override
 	public void info() {
-		System.out.println(age + "살이고 이름이 " + name + "인 호랑이가 살고 있어요.");
+		System.out.println(age + "살이고 이름이 " + name + "인 사자가 살고 있어요.");
 	}
 
 }

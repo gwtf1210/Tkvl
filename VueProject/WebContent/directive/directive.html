@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- message 가 거짓이면(없다면) 나타나게 하고 -->
+		<h1 v-if="!message" >you must send a message for help!!!</h1>
+		
+		<!-- message 가 있다면  나타나게 한다. -->
+		<h1 v-else>you have sent a message ~~~~~~~~!!!</h1>
+		
+		<!-- bind의 경우, 스크립트에서 el로 단방향 연결이지만, model의 경우, 양방향 연결이다. -->
+		<textarea v-model="message"></textarea>
+		
+		<!-- message가 참이면 보이게 -->
+		<button v-show="message">
+			send a message to allies for help!!!
+		</button>
+	</div>
+
+	<script type="text/javascript">
+		// Vue 객체 생성
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				message : 'our king is dead! send help!'
+			}
+		});
+	</script>
+</body>
+</html>

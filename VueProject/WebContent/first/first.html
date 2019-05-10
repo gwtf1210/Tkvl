@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- 1. Vue library loading -->
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<!-- 2. div등 화면 요소 생성, 아직 내용은 없는 단계 {{}} 역시 반영되지 않는다. -->
+	<div id="app">
+		<!-- vue 객체 안의 데이터 사용 {{}} 중괄호 두개 v-->
+		{{ message }} {{ name }}
+	</div>
+
+	<div id="other">
+		{{ name }}
+	</div>
+	<!-- 6. 화면 요소에 vue객체의 내용 반영 -->
+
+	<script type="text/javascript">
+		// 3. Vue 객체 생성
+		var vm = new Vue({
+			/* 4. el 필수 생성, data, method 등 생성 */
+			
+			// 5. el에 적혀있는 것으로 vue 객체와 화면 요소가 link 된다.
+			el : "#app",
+			data : {
+				message : 'hello, vue !!!',
+				name : 'queen'
+			}
+		});
+	</script>
+</body>
+</html>
+<!-- 7. 사용자 확인 -->
