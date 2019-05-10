@@ -1,5 +1,5 @@
 package com.inner;
-
+// static class
 public class Outer { // top-level class, outer class
 	static int num = 90;
 	

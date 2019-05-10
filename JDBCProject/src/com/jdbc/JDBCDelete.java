@@ -18,7 +18,7 @@ public class JDBCDelete {
 		Statement stat;
 		String q = "delete from customer where num = 729";
 
-		
+		  
 		// Connection Pool 사용
 		try {
 			// 1. DriverMananger 에 driver 등록
