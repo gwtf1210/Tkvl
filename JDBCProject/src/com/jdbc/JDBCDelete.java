@@ -12,12 +12,14 @@ public class JDBCDelete {
 		String url = "jdbc:mysql://localhost:3306/scott?serverTimezone=UTC";
 //		String url = "jdbc:mysql://127.0.0.1:3306/scott?serverTimezone=UTC";
 		String user = "scott";
-		String pass = "tiger";
+		String pass = "tiger";  
 
 		Connection con;
 		Statement stat;
 		String q = "delete from customer where num = 729";
 
+		  
+		// Connection Pool 사용
 		try {
 			// 1. DriverMananger 에 driver 등록
 			Class.forName("com.mysql.cj.jdbc.Driver");
