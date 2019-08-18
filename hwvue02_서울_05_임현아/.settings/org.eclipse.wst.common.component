@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="hwvue02_서울_05_임현아">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="hwvue02_서울_05_임현아"/>
-        <property name="java-output-path" value="/hwvue02_서울_05_임현아/build/classes"/>
-    </wb-module>
-</project-modules>
